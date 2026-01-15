@@ -3,11 +3,12 @@ interface SectionHeaderProps {
   title: string;
   description?: string;
   centered?: boolean;
+  className?: string;
 }
 
-const SectionHeader = ({ subtitle, title, description, centered = true }: SectionHeaderProps) => {
+const SectionHeader = ({ subtitle, title, description, centered = true, className = "" }: SectionHeaderProps) => {
   return (
-    <div className={`max-w-3xl ${centered ? 'mx-auto text-center' : ''} mb-12`}>
+    <div className={`max-w-3xl ${centered ? 'mx-auto text-center' : ''} mb-12 ${className}`}>
       {subtitle && (
         <p className="text-sm font-sans font-medium text-primary tracking-widest uppercase mb-3 animate-fade-in-up">
           {subtitle}

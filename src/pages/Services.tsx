@@ -1,155 +1,153 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import SectionHeader from "@/components/shared/SectionHeader";
 import {
   Sun,
   Heart,
   Leaf,
   Brain,
   Sparkles,
-  Flame,
-  Moon,
-  Activity,
-  Wind,
+  Mountain,
+  Video,
+  Flower2,
   ArrowRight,
-  CheckCircle,
+  ShieldCheck,
+  CheckCircle2,
 } from "lucide-react";
 
-const allServices = [
+const services = [
   {
-    icon: Sun,
-    title: "Hatha Yoga",
-    description: "The foundation of all yoga practices, Hatha Yoga focuses on physical postures (asanas) and breathing techniques (pranayama) to prepare the body for deeper spiritual practices.",
-    whoIsItFor: ["Beginners starting their yoga journey", "Those seeking improved flexibility and strength", "Anyone wanting a balanced, traditional approach", "People looking to reduce stress and tension"],
-    benefits: ["Enhanced physical strength and flexibility", "Improved posture and body awareness", "Reduced stress and mental clarity", "Better breathing capacity", "Foundation for advanced practices"],
+    icon: Video,
+    title: "Personal Yoga Classes",
+    subtitle: "Online & Offline",
+    description: "Experience the benefits of personalized yoga sessions tailored to your body type and flexibility levels. Available both online and offline.",
+    benefits: ["One-on-one attention", "Customized sequences", "Flexible scheduling", "Progress tracking"],
+    color: "bg-blue-50 text-blue-600",
   },
   {
     icon: Heart,
     title: "Yoga Therapy",
-    description: "A personalized therapeutic approach using yoga techniques to address specific health conditions, chronic pain, and lifestyle disorders under expert guidance.",
-    whoIsItFor: ["Those with chronic health conditions", "People recovering from injuries", "Individuals with back pain or joint issues", "Those managing lifestyle disorders"],
-    benefits: ["Targeted healing for specific conditions", "Personalized treatment plans", "Drug-free pain management", "Improved quality of life", "Long-term health maintenance"],
+    subtitle: "Personalized Healing",
+    description: "Specialized therapeutic yoga sessions designed to address specific health concerns and promote recovery through targeted asanas and breathing.",
+    benefits: ["Injury rehabilitation", "Pain management", "Chronic condition support", "Holistic healing"],
+    color: "bg-rose-50 text-rose-600",
   },
   {
     icon: Leaf,
     title: "Naturopathy",
-    description: "A holistic healing system that uses natural methods including diet therapy, hydrotherapy, and lifestyle modifications to promote the body's inherent self-healing abilities.",
-    whoIsItFor: ["Those preferring natural healing methods", "People with digestive issues", "Individuals seeking detoxification", "Anyone wanting preventive healthcare"],
-    benefits: ["Natural, drug-free healing", "Improved digestive health", "Body detoxification", "Enhanced immunity", "Sustainable lifestyle changes"],
+    subtitle: "Lifestyle Disease Management",
+    description: "Holistic naturopathy treatments targeting diverse lifestyle diseases and chronic health issues by restoring the body's natural balance.",
+    benefits: ["Natural detoxification", "Dietary guidance", "Immunity boosting", "Sustainable wellness"],
+    color: "bg-green-50 text-green-600",
+  },
+  {
+    icon: ShieldCheck, // Changed to something implying support/alignment
+    title: "Rope & Belt Therapy",
+    subtitle: "Joint Pain & Alignment",
+    description: "Specialized Iyengar-inspired rope and belt therapy focused on correcting body alignment and alleviating chronic joint pains.",
+    benefits: ["Spine alignment", "Joint pain relief", "Deep stretching", "Postural correction"],
+    color: "bg-amber-50 text-amber-600",
   },
   {
     icon: Brain,
-    title: "Meditation",
-    description: "Guided meditation practices from various traditions including Vipassana, Yoga Nidra, and mindfulness meditation to cultivate inner peace and mental clarity.",
-    whoIsItFor: ["Those dealing with stress and anxiety", "People seeking mental clarity", "Anyone wanting deeper self-awareness", "Individuals looking for spiritual growth"],
-    benefits: ["Reduced anxiety and stress", "Improved concentration and focus", "Better emotional regulation", "Enhanced self-awareness", "Deeper sense of peace"],
+    title: "Mindfulness Programs",
+    subtitle: "Stress Management",
+    description: "Evidence-based mindfulness programs designed to reduce stress, enhance focus, and promote emotional regulation in daily life.",
+    benefits: ["Stress reduction", "Better focus", "Emotional balance", "Anxiety management"],
+    color: "bg-purple-50 text-purple-600",
   },
   {
-    icon: Sparkles,
-    title: "Energy Healing",
-    description: "Techniques including chakra balancing, pranic healing, and Reiki to restore the flow of vital energy through the body and promote holistic healing.",
-    whoIsItFor: ["Those feeling energetically depleted", "People experiencing unexplained fatigue", "Individuals interested in subtle body work", "Anyone seeking emotional release"],
-    benefits: ["Restored energy and vitality", "Emotional healing and balance", "Chakra alignment", "Reduced energy blockages", "Enhanced overall well-being"],
+    icon: Flower2,
+    title: "Meditation Classes",
+    subtitle: "Classes & Retreats",
+    description: "Guided meditation sessions and immersive retreats to help you find inner silence, clarity, and spiritual connection.",
+    benefits: ["Mental clarity", "Inner peace", "Self-discovery", "Deep relaxation"],
+    color: "bg-teal-50 text-teal-600",
   },
   {
-    icon: Flame,
-    title: "Power Yoga",
-    description: "A dynamic, fitness-based approach to yoga that builds strength, endurance, and flexibility through flowing sequences and challenging postures.",
-    whoIsItFor: ["Fitness enthusiasts seeking variety", "Those wanting a vigorous workout", "People looking to build strength", "Athletes seeking flexibility"],
-    benefits: ["Increased strength and endurance", "Improved cardiovascular health", "Enhanced flexibility", "Calorie burning and weight management", "Mental focus and discipline"],
-  },
-  {
-    icon: Moon,
-    title: "Mindfulness",
-    description: "Practical techniques for cultivating present-moment awareness in daily life, reducing automatic reactions, and developing a more conscious way of being.",
-    whoIsItFor: ["Those overwhelmed by daily life", "People with anxiety or depression", "Anyone wanting to be more present", "Individuals seeking work-life balance"],
-    benefits: ["Reduced reactivity to stress", "Improved emotional intelligence", "Better decision-making", "Enhanced relationships", "Greater life satisfaction"],
-  },
-  {
-    icon: Activity,
-    title: "Stress Management",
-    description: "Comprehensive programs combining yoga, breathing techniques, relaxation practices, and lifestyle guidance to effectively manage and reduce stress.",
-    whoIsItFor: ["Working professionals with high stress", "Students facing exam pressure", "Anyone experiencing burnout", "Those with stress-related health issues"],
-    benefits: ["Effective stress reduction tools", "Improved sleep quality", "Lower blood pressure", "Better work-life balance", "Enhanced productivity"],
-  },
-  {
-    icon: Wind,
-    title: "Pranayama",
-    description: "Ancient yogic breathing practices that purify the energy channels, calm the nervous system, and expand vital life force (prana) throughout the body.",
-    whoIsItFor: ["Those with respiratory issues", "People seeking energy enhancement", "Anyone wanting deeper meditation", "Individuals with anxiety"],
-    benefits: ["Improved lung capacity", "Calmer nervous system", "Enhanced mental clarity", "Better oxygen utilization", "Preparation for meditation"],
+    icon: Mountain,
+    title: "Wellness Retreats",
+    subtitle: "Health & Rejuvenation",
+    description: "Transformative health and wellness retreats in serene locations, combining yoga, nature, and holistic living for total rejuvenation.",
+    benefits: ["Digital detox", "Nature immersion", "Holistic reset", "Community connection"],
+    color: "bg-indigo-50 text-indigo-600",
   },
 ];
 
 const Services = () => {
   return (
-    <div className="overflow-hidden">
+    <div className="min-h-screen bg-background overflow-hidden font-sans">
       {/* Hero Section */}
-      <section className="zen-section bg-sage-light">
-        <div className="zen-container">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-sm font-sans font-medium text-primary tracking-widest uppercase mb-4 animate-fade-in-up">
-              Our Services
-            </p>
-            <h1 className="zen-heading-1 text-foreground mb-6 animate-fade-in-up animation-delay-100">
-              Comprehensive <span className="text-primary">Wellness Offerings</span>
+      <section className="relative py-24 lg:py-32 bg-sage-50 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1545205566-3d4555809d27?q=80&w=2835&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
+        <div className="zen-container relative z-10">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 backdrop-blur-sm border border-sage-200 text-sage-800 text-sm font-medium animate-fade-in-up">
+              <Sparkles className="w-4 h-4" />
+              <span>Explore Our Offerings</span>
+            </div>
+
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium text-sage-900 tracking-tight leading-tight animate-fade-in-up animation-delay-100">
+              Holistic Path to <br />
+              <span className="text-primary italic">Well-being</span>
             </h1>
-            <p className="zen-body animate-fade-in-up animation-delay-200">
-              From classical yoga practices to therapeutic treatments, we offer a complete 
-              range of services designed to support every aspect of your wellness journey.
+
+            <p className="text-lg md:text-xl text-sage-700 max-w-2xl mx-auto leading-relaxed animate-fade-in-up animation-delay-200">
+              Discover a comprehensive range of traditional and modern therapies designed to harmonize your mind, body, and spirit.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Services List */}
-      <section className="zen-section">
+      {/* Services Grid */}
+      <section className="py-20 lg:py-32 relative">
         <div className="zen-container">
-          <div className="space-y-16">
-            {allServices.map((service, index) => (
-              <div 
-                key={service.title}
-                className={`grid lg:grid-cols-2 gap-12 items-start ${
-                  index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-                }`}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="group relative bg-card hover:bg-white rounded-3xl p-8 transition-all duration-500 hover:shadow-2xl border border-border/50 hover:border-primary/20 animate-fade-in-up"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className={`animate-fade-in-up ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="p-3 bg-sage-light rounded-lg">
-                      <service.icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <h2 className="zen-heading-3 text-foreground">{service.title}</h2>
+                {/* Hover Background Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-sage-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
+
+                <div className="relative z-10 space-y-6">
+                  {/* Icon */}
+                  <div className={`w-14 h-14 rounded-2xl ${service.color} flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-sm`}>
+                    <service.icon className="w-7 h-7" />
                   </div>
-                  <p className="zen-body mb-6">{service.description}</p>
-                  <Link to="/consultation">
-                    <Button variant="zen" size="lg">
-                      Book This Service
-                      <ArrowRight className="h-4 w-4 ml-1" />
-                    </Button>
-                  </Link>
-                </div>
-                <div className={`space-y-6 animate-fade-in-up animation-delay-200 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                  <div className="bg-card border border-border rounded-lg p-6">
-                    <h4 className="font-serif font-medium text-foreground mb-4">Who Is It For?</h4>
-                    <ul className="space-y-2">
-                      {service.whoIsItFor.map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+
+                  {/* Content */}
+                  <div className="space-y-3">
+                    <div className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">{service.subtitle}</div>
+                    <h3 className="text-2xl font-serif text-foreground group-hover:text-primary transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {service.description}
+                    </p>
                   </div>
-                  <div className="bg-sage-light rounded-lg p-6">
-                    <h4 className="font-serif font-medium text-foreground mb-4">Key Benefits</h4>
-                    <ul className="space-y-2">
-                      {service.benefits.map((benefit) => (
-                        <li key={benefit} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+
+                  {/* Benefits */}
+                  <div className="pt-6 border-t border-border/50">
+                    <ul className="space-y-3">
+                      {service.benefits.map((benefit, idx) => (
+                        <li key={idx} className="flex items-center gap-3 text-sm text-sage-700">
+                          <CheckCircle2 className="w-4 h-4 text-primary/70" />
                           {benefit}
                         </li>
                       ))}
                     </ul>
+                  </div>
+
+                  {/* Action */}
+                  <div className="pt-4">
+                    <Link to="/contact">
+                      <Button variant="ghost" className="group/btn p-0 hover:bg-transparent hover:text-primary">
+                        Book Session
+                        <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -158,25 +156,28 @@ const Services = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="zen-section bg-primary">
-        <div className="zen-container text-center">
-          <h2 className="zen-heading-2 text-primary-foreground mb-4 animate-fade-in-up">
-            Not Sure Which Service Is Right for You?
+      {/* CTA Section */}
+      <section className="py-20 bg-sage-900 relative overflow-hidden text-white">
+        <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1599901868618-eca80330dbee?q=80&w=2800&auto=format&fit=crop')] bg-cover bg-fixed center" />
+        <div className="zen-container relative z-10 text-center space-y-8">
+          <h2 className="text-3xl md:text-5xl font-serif mb-6 animate-fade-in-up">
+            Begin Your Journey Today
           </h2>
-          <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto animate-fade-in-up animation-delay-100">
-            Schedule a free consultation with our wellness experts to discuss your needs 
-            and create a personalized wellness plan.
+          <p className="text-sage-200 max-w-2xl mx-auto text-lg mb-8 animate-fade-in-up animation-delay-100">
+            Whether you're seeking relief from chronic pain, looking to de-stress, or wanting to deepen your yoga practice, we're here to guide you.
           </p>
-          <Link to="/consultation" className="animate-fade-in-up animation-delay-200 inline-block">
-            <Button 
-              variant="outline" 
-              size="xl" 
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 border-primary-foreground"
-            >
-              Book a Free Consultation
-            </Button>
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-200">
+            <Link to="/contact">
+              <Button size="xl" className="bg-white text-sage-900 hover:bg-sage-100 border-none min-w-[200px]">
+                Book Appointment
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button size="xl" variant="outline" className="text-white border-white hover:bg-white/10 min-w-[200px]">
+                Enquire Now
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
     </div>

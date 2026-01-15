@@ -24,33 +24,41 @@ const testimonials = [
 
 const Testimonials = () => {
     return (
-        <section className="py-20 bg-sage-light/20">
+        <section className="py-24 bg-sage-50/50">
             <div className="zen-container">
-                <SectionHeader
-                    subtitle="Success Stories"
-                    title="Voices of Transformation"
-                    description="Hear from our students and participants who have experienced the life-changing power of authentic yoga."
-                />
+                <div className="animate-fade-in-up">
+                    <SectionHeader
+                        subtitle="Success Stories"
+                        title="Voices of Transformation"
+                        description="Hear from our students and participants who have experienced the life-changing power of authentic yoga."
+                    />
+                </div>
 
-                <div className="grid md:grid-cols-3 gap-8 pt-8">
+                <div className="grid md:grid-cols-3 gap-8 pt-12">
                     {testimonials.map((item, index) => (
-                        <div key={index} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-                            <div className="flex gap-1 mb-4">
+                        <div
+                            key={index}
+                            className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border border-transparent hover:border-primary/10 animate-fade-in-up flex flex-col h-full"
+                            style={{ animationDelay: `${index * 150}ms` }}
+                        >
+                            <div className="flex gap-1 mb-6">
                                 {[...Array(item.rating)].map((_, i) => (
-                                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                                    <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
                                 ))}
                             </div>
-                            <Quote className="h-8 w-8 text-primary/20 mb-4" />
-                            <p className="text-foreground/80 leading-relaxed mb-6 italic min-h-[80px]">
-                                "{item.quote}"
-                            </p>
-                            <div className="flex items-center gap-4 border-t border-border/50 pt-4">
-                                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center font-serif text-primary font-bold">
+                            <div className="flex-1">
+                                <Quote className="h-10 w-10 text-sage-200 mb-4" />
+                                <p className="text-lg text-foreground/80 leading-relaxed mb-8 font-light italic">
+                                    "{item.quote}"
+                                </p>
+                            </div>
+                            <div className="flex items-center gap-4 border-t border-gray-100 pt-6 mt-auto">
+                                <div className="w-12 h-12 bg-sage-100 rounded-full flex items-center justify-center font-serif text-xl text-sage-700 font-bold shrink-0">
                                     {item.author[0]}
                                 </div>
                                 <div>
-                                    <h4 className="font-serif font-medium text-foreground">{item.author}</h4>
-                                    <p className="text-xs text-muted-foreground uppercase tracking-wider">{item.role}</p>
+                                    <h4 className="font-serif font-medium text-foreground text-lg">{item.author}</h4>
+                                    <p className="text-xs text-muted-foreground uppercase tracking-wider font-medium">{item.role}</p>
                                 </div>
                             </div>
                         </div>

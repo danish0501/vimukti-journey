@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
@@ -29,19 +29,21 @@ const Contact = () => {
   };
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="zen-section bg-sage-light">
-        <div className="zen-container">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-sm font-sans font-medium text-primary tracking-widest uppercase mb-4 animate-fade-in-up">
-              Contact Us
-            </p>
-            <h1 className="zen-heading-1 text-foreground mb-6 animate-fade-in-up animation-delay-100">
-              We're Here to <span className="text-primary">Help</span>
+      <section className="relative items-center justify-center pt-32 pb-20 md:pb-32 bg-sage-50/50 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1599447421405-0c1a1143296f?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center opacity-5" />
+        <div className="zen-container relative z-10 text-center">
+          <div className="max-w-4xl mx-auto space-y-8 animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 border border-sage-200 rounded-full px-4 py-1.5 backdrop-blur-sm bg-white/50 mb-6">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-primary">Get in Touch</span>
+            </div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium text-foreground tracking-tight leading-tight">
+              We're Here to <span className="text-primary italic">Help</span>
             </h1>
-            <p className="zen-body animate-fade-in-up animation-delay-200">
-              Have questions about our services, programs, or retreats? 
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light">
+              Have questions about our services, programs, or retreats?
               Reach out and our team will be happy to assist you.
             </p>
           </div>
@@ -49,93 +51,63 @@ const Contact = () => {
       </section>
 
       {/* Contact Info & Form */}
-      <section className="zen-section">
+      <section className="py-20 md:py-32 bg-white">
         <div className="zen-container">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
             {/* Contact Information */}
-            <div className="animate-fade-in-up">
-              <h2 className="zen-heading-2 text-foreground mb-6">Get in Touch</h2>
-              <p className="zen-body mb-8">
-                Whether you have a question about our services, want to book a consultation, 
-                or simply wish to learn more about Vimukti, we're here to help.
-              </p>
+            <div className="animate-fade-in-up space-y-8">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-serif font-medium text-foreground mb-4">Let's Start a Conversation</h2>
+                <p className="text-muted-foreground text-lg font-light leading-relaxed">
+                  Whether you have a question about our services, want to book a consultation,
+                  or simply wish to learn more about Vimukti, we're here to help.
+                </p>
+              </div>
 
-              <div className="space-y-6 mb-12">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-sage-light rounded-lg">
-                    <MapPin className="h-5 w-5 text-primary" />
+              <div className="space-y-6">
+                {[
+                  { icon: MapPin, title: "Visit Us", content: "123 Wellness Street, Serenity Road,<br />Mumbai, Maharashtra 400001, India" },
+                  { icon: Phone, title: "Call Us", content: "+91 98765 43210<br />+91 22 2345 6789" },
+                  { icon: Mail, title: "Email Us", content: "info@vimuktiyoga.com<br />consultations@vimuktiyoga.com" },
+                  { icon: Clock, title: "Operating Hours", content: "Monday - Saturday: 6:00 AM - 8:00 PM<br />Sunday: 7:00 AM - 12:00 PM" }
+                ].map((item, index) => (
+                  <div key={item.title} className="flex items-start gap-6 p-6 rounded-2xl border border-sage-100 bg-sage-50/30 hover:bg-sage-50 transition-colors duration-300">
+                    <div className="p-3 bg-white rounded-xl shadow-sm text-primary">
+                      <item.icon className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h4 className="font-serif font-medium text-lg text-foreground mb-2">{item.title}</h4>
+                      <p className="text-muted-foreground text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: item.content }} />
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-medium text-foreground mb-1">Visit Us</h4>
-                    <p className="text-muted-foreground text-sm">
-                      123 Wellness Street, Serenity Road,<br />
-                      Mumbai, Maharashtra 400001, India
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-sage-light rounded-lg">
-                    <Phone className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-foreground mb-1">Call Us</h4>
-                    <p className="text-muted-foreground text-sm">
-                      +91 98765 43210<br />
-                      +91 22 2345 6789
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-sage-light rounded-lg">
-                    <Mail className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-foreground mb-1">Email Us</h4>
-                    <p className="text-muted-foreground text-sm">
-                      info@vimuktiyoga.com<br />
-                      consultations@vimuktiyoga.com
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-sage-light rounded-lg">
-                    <Clock className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-foreground mb-1">Operating Hours</h4>
-                    <p className="text-muted-foreground text-sm">
-                      Monday - Saturday: 6:00 AM - 8:00 PM<br />
-                      Sunday: 7:00 AM - 12:00 PM
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
 
               {/* Map Placeholder */}
-              <div className="bg-muted rounded-lg h-64 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="h-8 w-8 text-primary mx-auto mb-2" />
-                  <p className="text-sm text-muted-foreground">Interactive Map</p>
-                  <p className="text-xs text-muted-foreground">Mumbai, Maharashtra</p>
+              <div className="relative h-64 w-full rounded-3xl overflow-hidden shadow-md border border-sage-100">
+                <div className="absolute inset-0 bg-sage-200 flex items-center justify-center bg-[url('https://api.mapbox.com/styles/v1/mapbox/light-v10/static/72.8777,19.0760,12,0/800x600?access_token=YOUR_TOKEN')] bg-cover bg-center">
+                  <div className="bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-lg text-center">
+                    <MapPin className="h-8 w-8 text-primary mx-auto mb-2" />
+                    <p className="text-sm font-medium text-foreground">Vimukti Wellness Center</p>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Contact Form */}
             <div className="animate-fade-in-up animation-delay-200">
-              <div className="bg-card rounded-lg border border-border p-8">
-                <h3 className="zen-heading-3 text-foreground mb-2">Send Us a Message</h3>
-                <p className="text-muted-foreground text-sm mb-6">
+              <div className="bg-white rounded-[2.5rem] shadow-xl shadow-sage-900/5 border border-sage-100 p-8 md:p-12 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-bl-full -mr-8 -mt-8 pointer-events-none" />
+
+                <h3 className="font-serif font-medium text-2xl text-foreground mb-2 relative z-10">Send Us a Message</h3>
+                <p className="text-muted-foreground text-sm mb-8 relative z-10">
                   Fill out the form below and we'll get back to you as soon as possible.
                 </p>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                  <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                      <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2 ml-1">
                         Your Name *
                       </label>
                       <Input
@@ -145,10 +117,11 @@ const Contact = () => {
                         onChange={handleChange}
                         placeholder="Enter your name"
                         required
+                        className="h-12 bg-sage-50/50 border-sage-100 focus:ring-primary focus:border-primary"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                      <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2 ml-1">
                         Email Address *
                       </label>
                       <Input
@@ -159,12 +132,13 @@ const Contact = () => {
                         onChange={handleChange}
                         placeholder="your@email.com"
                         required
+                        className="h-12 bg-sage-50/50 border-sage-100 focus:ring-primary focus:border-primary"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
+                    <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2 ml-1">
                       Subject *
                     </label>
                     <Input
@@ -174,11 +148,12 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="What is this regarding?"
                       required
+                      className="h-12 bg-sage-50/50 border-sage-100 focus:ring-primary focus:border-primary"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                    <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2 ml-1">
                       Your Message *
                     </label>
                     <Textarea
@@ -187,13 +162,14 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="How can we help you?"
-                      rows={5}
+                      rows={6}
                       required
+                      className="bg-sage-50/50 border-sage-100 focus:ring-primary focus:border-primary resize-none p-4"
                     />
                   </div>
 
-                  <Button type="submit" variant="zen" size="lg" className="w-full">
-                    <Send className="h-4 w-4 mr-2" />
+                  <Button type="submit" size="xl" className="w-full h-14 text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                    <Send className="h-5 w-5 mr-2" />
                     Send Message
                   </Button>
                 </form>
@@ -204,20 +180,20 @@ const Contact = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="zen-section bg-primary">
-        <div className="zen-container text-center">
-          <h2 className="zen-heading-2 text-primary-foreground mb-4 animate-fade-in-up">
+      <section className="py-24 bg-sage-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1599447421405-0c1a1143296f?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay" />
+        <div className="zen-container relative z-10 text-center">
+          <h2 className="text-4xl md:text-5xl font-serif font-medium text-white mb-6 animate-fade-in-up">
             Begin Your Journey Today
           </h2>
-          <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto animate-fade-in-up animation-delay-100">
-            Ready to transform your life through yoga and holistic wellness? 
+          <p className="text-lg text-sage-200 mb-10 max-w-2xl mx-auto animate-fade-in-up animation-delay-100 font-light">
+            Ready to transform your life through yoga and holistic wellness?
             Take the first step by scheduling a consultation.
           </p>
           <Link to="/consultation" className="animate-fade-in-up animation-delay-200 inline-block">
-            <Button 
-              variant="outline" 
-              size="xl" 
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 border-primary-foreground"
+            <Button
+              size="xl"
+              className="bg-white text-sage-900 hover:bg-sage-100 border-none h-14 px-8 text-lg font-medium shadow-xl hover:scale-105 transition-all"
             >
               Book a Consultation
             </Button>

@@ -35,6 +35,18 @@ const navItems = [
     ],
   },
   {
+    name: "Services",
+    path: "/services",
+    subItems: [
+      { name: "Personal Yoga", path: "/services", desc: "Online & Offline Classes" },
+      { name: "Yoga Therapy", path: "/services", desc: "Personalized Healing" },
+      { name: "Naturopathy", path: "/services", desc: "Lifestyle Disease Management" },
+      { name: "Rope & Belt Therapy", path: "/services", desc: "Joint Pain & Alignment" },
+      { name: "Mindfulness", path: "/services", desc: "Stress Management" },
+      { name: "Retreats", path: "/services", desc: "Meditation & Wellness" },
+    ],
+  },
+  {
     name: "Courses",
     path: "/training",
     subItems: [
@@ -57,6 +69,7 @@ const navItems = [
   {
     name: "Resources",
     path: "/blog",
+    align: "right",
     subItems: [
       { name: "Blog", path: "/blog", desc: "Latest wellness articles" },
       { name: "Publications", path: "/blog#publications", desc: "Books and research" },
@@ -65,6 +78,7 @@ const navItems = [
   {
     name: "Contact",
     path: "/contact",
+    align: "right",
     subItems: [
       { name: "Contact Us", path: "/contact", desc: "Get in touch" },
       { name: "Locations", path: "/contact#locations", desc: "Find us near you" },
@@ -103,7 +117,7 @@ const Navbar = () => {
                         <NavigationMenuTrigger className="bg-transparent hover:bg-sage-light/20 text-base font-medium">
                           {item.name}
                         </NavigationMenuTrigger>
-                        <NavigationMenuContent>
+                        <NavigationMenuContent className={item.align === "right" ? "right-0 left-auto origin-top-right" : ""}>
                           <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-card">
                             {item.subItems.map((subItem) => (
                               <ListItem
@@ -194,7 +208,7 @@ const Navbar = () => {
                 </AccordionItem>
               ))}
             </Accordion>
-            
+
             <div className="pt-6">
               <Link to="/consultation" onClick={() => setIsOpen(false)}>
                 <Button variant="zen" size="lg" className="w-full text-lg h-12">

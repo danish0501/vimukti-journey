@@ -1,53 +1,55 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-yoga.jpg";
+import heroImage from "@/assets/hero-new.jpg";
 
 const Hero = () => {
     return (
-        <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-            {/* Background with Parallax effect */}
-            <div
-                className="absolute inset-0 bg-cover bg-center transform scale-105"
-                style={{ backgroundImage: `url(${heroImage})` }}
-            >
-                <div className="absolute inset-0 bg-black/40" />
+        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+            {/* Background with Slow Zoom Parallax effect */}
+            <div className="absolute inset-0 overflow-hidden">
+                <div
+                    className="absolute inset-0 bg-cover bg-center transform scale-105 animate-[zoomIn_20s_ease-out_infinite_alternate]"
+                    style={{ backgroundImage: `url(${heroImage})` }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
             </div>
 
-            <div className="zen-container relative z-10 text-center text-white max-w-4xl mx-auto">
-                <div className="space-y-6 animate-fade-in-up">
-                    <div className="inline-block border border-white/30 rounded-full px-4 py-1.5 backdrop-blur-sm bg-white/10 mb-4">
-                        <span className="text-xs font-medium tracking-[0.2em] uppercase">Est. 2024</span>
+            <div className="zen-container relative z-10 text-center text-white max-w-5xl mx-auto px-4 sm:px-6">
+                <div className="space-y-8 animate-fade-in-up">
+                    <div className="inline-flex items-center gap-2 border border-white/30 rounded-full px-5 py-2 backdrop-blur-md bg-white/10 mb-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 cursor-default">
+                        <span className="w-2 h-2 rounded-full bg-sage-light animate-pulse"></span>
+                        <span className="text-xs md:text-sm font-medium tracking-[0.2em] uppercase">Est. 2024 • Holistic Wellness</span>
                     </div>
 
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium tracking-tight leading-tight">
-                        Vimukti Yoga <br />
-                        <span className="italic text-sage-light">& Wellness Centre</span>
+                    <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-medium tracking-tight leading-[1.1] drop-shadow-lg">
+                        <span className="block animate-fade-in-up" style={{ animationDelay: '100ms' }}>Vimukti Yoga</span>
+                        <span className="block italic text-sage-light mt-2 animate-fade-in-up" style={{ animationDelay: '300ms' }}>& Wellness Centre</span>
                     </h1>
 
-                    <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed font-light">
-                        The world's premier destination for holistic healing, where ancient wisdom
+                    <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed font-light drop-shadow-md animate-fade-in-up" style={{ animationDelay: '500ms' }}>
+                        The premier sanctuary for holistic healing, where ancient wisdom
                         meets modern science for your complete physical, mental, and spiritual well-being.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row justify-center gap-4 pt-8">
-                        <Link to="/consultation">
-                            <Button size="xl" className="bg-sage-light text-foreground hover:bg-sage w-full sm:w-auto min-w-[200px] text-lg h-14">
+                    <div className="flex flex-col sm:flex-row justify-center gap-4 pt-8 animate-fade-in-up" style={{ animationDelay: '700ms' }}>
+                        <Link to="/consultation" className="w-full sm:w-auto">
+                            <Button size="xl" className="w-full bg-sage-light text-sage-900 hover:bg-white hover:text-sage-950 transition-all duration-300 text-lg h-14 shadow-lg hover:shadow-xl hover:-translate-y-1">
                                 Start Your Journey
                             </Button>
                         </Link>
-                        <Link to="/training">
-                            <Button variant="outline" size="xl" className="bg-transparent text-white border-white hover:bg-white/20 w-full sm:w-auto min-w-[200px] text-lg h-14">
-                                Explore Courses
+                        <Link to="/services" className="w-full sm:w-auto">
+                            <Button variant="outline" size="xl" className="w-full bg-transparent text-white border-white hover:bg-white/20 transition-all duration-300 text-lg h-14 backdrop-blur-sm shadow-lg hover:shadow-xl hover:-translate-y-1">
+                                Explore Services
                             </Button>
                         </Link>
                     </div>
                 </div>
             </div>
 
-            {/* Scroll indicator */}
-            <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce opacity-70">
-                <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center p-2">
-                    <div className="w-1 h-2 bg-white rounded-full" />
+            {/* Scroll Indicator */}
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+                    <div className="w-1.5 h-1.5 bg-white rounded-full mt-2 animate-ping" />
                 </div>
             </div>
         </section>

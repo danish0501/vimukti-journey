@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import SectionHeader from "@/components/shared/SectionHeader";
-import { Video, MapPin, Clock, CheckCircle, Phone, Mail } from "lucide-react";
+import { Video, MapPin, Clock, CheckCircle, Phone, Mail, Calendar, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const consultationTypes = [
@@ -65,48 +65,61 @@ const Consultation = () => {
   };
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="zen-section bg-sage-light">
-        <div className="zen-container">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-sm font-sans font-medium text-primary tracking-widest uppercase mb-4 animate-fade-in-up">
-              Book a Consultation
-            </p>
-            <h1 className="zen-heading-1 text-foreground mb-6 animate-fade-in-up animation-delay-100">
-              Begin Your <span className="text-primary">Wellness Journey</span>
+      <section className="relative items-center justify-center pt-32 pb-20 md:pb-32 bg-sage-50/50 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544367563-12123d8965cd?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center opacity-5" />
+        <div className="zen-container relative z-10 text-center">
+          <div className="max-w-4xl mx-auto space-y-8 animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 border border-sage-200 rounded-full px-4 py-1.5 backdrop-blur-sm bg-white/50 mb-6">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-primary">Book a Consultation</span>
+            </div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium text-foreground tracking-tight leading-tight">
+              Begin Your <span className="text-primary italic">Wellness Journey</span>
             </h1>
-            <p className="zen-body animate-fade-in-up animation-delay-200">
-              Schedule a consultation with our expert team to discuss your wellness goals 
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light">
+              Schedule a consultation with our expert team to discuss your wellness goals
               and create a personalized plan tailored to your needs.
             </p>
+            <div className="flex justify-center gap-4 pt-4">
+              <Button
+                className="h-12 px-8 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+                onClick={() => document.getElementById('booking-form')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Request Appointment
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Consultation Types */}
-      <section className="zen-section">
+      <section className="py-20 md:py-32 bg-white">
         <div className="zen-container">
           <SectionHeader
             subtitle="Choose Your Preference"
             title="How Would You Like to Connect?"
+            className="mb-16"
           />
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {consultationTypes.map((type, index) => (
-              <div 
+              <div
                 key={type.type}
-                className="zen-card animate-fade-in-up"
+                className="group bg-white p-8 md:p-10 rounded-3xl border border-sage-100 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-fade-in-up"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="p-3 bg-sage-light rounded-lg w-fit mb-4">
-                  <type.icon className="h-6 w-6 text-primary" />
+                <div className="w-16 h-16 bg-sage-50 rounded-2xl flex items-center justify-center mb-8 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                  <type.icon className="h-8 w-8" />
                 </div>
-                <h3 className="zen-heading-3 text-foreground mb-3">{type.title}</h3>
-                <p className="text-muted-foreground mb-6">{type.description}</p>
-                <ul className="space-y-2">
+                <h3 className="font-serif font-medium text-2xl text-foreground mb-4">{type.title}</h3>
+                <p className="text-muted-foreground mb-8 leading-relaxed font-light">{type.description}</p>
+                <ul className="space-y-4">
                   {type.benefits.map((benefit) => (
-                    <li key={benefit} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CheckCircle className="h-4 w-4 text-primary" />
+                    <li key={benefit} className="flex items-center gap-3 text-sm text-foreground/80">
+                      <div className="bg-sage-50 rounded-full p-1 group-hover:bg-primary/10 transition-colors">
+                        <CheckCircle className="h-4 w-4 text-primary" />
+                      </div>
                       {benefit}
                     </li>
                   ))}
@@ -118,46 +131,46 @@ const Consultation = () => {
       </section>
 
       {/* Booking Form */}
-      <section className="zen-section bg-card">
-        <div className="zen-container">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div className="animate-fade-in-up">
-              <p className="text-sm font-sans font-medium text-primary tracking-widest uppercase mb-3">
-                Book Now
-              </p>
-              <h2 className="zen-heading-2 text-foreground mb-6">
-                Request Your Consultation
-              </h2>
-              <p className="zen-body mb-8">
-                Fill out the form and our team will contact you within 24 hours 
-                to confirm your consultation appointment.
-              </p>
-              
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-sage-light rounded-lg">
-                    <Clock className="h-5 w-5 text-primary" />
+      <section id="booking-form" className="py-20 bg-sage-50 relative overflow-hidden">
+        <div className="zen-container relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div className="animate-fade-in-up space-y-10">
+              <div className="space-y-4">
+                <span className="text-sm font-medium text-primary uppercase tracking-widest mb-3 block">Book Now</span>
+                <h2 className="text-3xl md:text-5xl font-serif font-medium text-foreground leading-tight">
+                  Request Your <span className="text-sage-600 italic">Consultation</span>
+                </h2>
+                <p className="text-lg text-muted-foreground leading-relaxed font-light">
+                  Fill out the form and our team will contact you within 24 hours
+                  to confirm your consultation appointment.
+                </p>
+              </div>
+
+              <div className="space-y-8 bg-white p-8 rounded-3xl shadow-sm border border-sage-100">
+                <div className="flex items-center gap-6 group hover:bg-sage-50 p-4 rounded-xl transition-colors duration-300">
+                  <div className="w-14 h-14 bg-sage-100 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+                    <Clock className="h-6 w-6" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-foreground">Consultation Duration</h4>
+                    <h4 className="font-serif font-medium text-lg text-foreground mb-1">Consultation Duration</h4>
                     <p className="text-sm text-muted-foreground">45-60 minutes for initial assessment</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-sage-light rounded-lg">
-                    <Phone className="h-5 w-5 text-primary" />
+                <div className="flex items-center gap-6 group hover:bg-sage-50 p-4 rounded-xl transition-colors duration-300">
+                  <div className="w-14 h-14 bg-sage-100 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+                    <Phone className="h-6 w-6" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-foreground">Call Us Directly</h4>
+                    <h4 className="font-serif font-medium text-lg text-foreground mb-1">Call Us Directly</h4>
                     <p className="text-sm text-muted-foreground">+91 98765 43210</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-sage-light rounded-lg">
-                    <Mail className="h-5 w-5 text-primary" />
+                <div className="flex items-center gap-6 group hover:bg-sage-50 p-4 rounded-xl transition-colors duration-300">
+                  <div className="w-14 h-14 bg-sage-100 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+                    <Mail className="h-6 w-6" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-foreground">Email Us</h4>
+                    <h4 className="font-serif font-medium text-lg text-foreground mb-1">Email Us</h4>
                     <p className="text-sm text-muted-foreground">consultations@vimuktiyoga.com</p>
                   </div>
                 </div>
@@ -165,10 +178,11 @@ const Consultation = () => {
             </div>
 
             <div className="animate-fade-in-up animation-delay-200">
-              <form onSubmit={handleSubmit} className="bg-background rounded-lg border border-border p-8">
-                <div className="space-y-6">
+              <form onSubmit={handleSubmit} className="bg-white rounded-3xl shadow-xl border border-sage-100 p-8 md:p-10 relative">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-sage-50 rounded-bl-[100px] -mr-0 -mt-0 opacity-50 pointer-events-none" />
+                <div className="space-y-6 relative z-10">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2 ml-1">
                       Full Name *
                     </label>
                     <Input
@@ -178,12 +192,13 @@ const Consultation = () => {
                       onChange={handleChange}
                       placeholder="Enter your full name"
                       required
+                      className="h-12 bg-sage-50/50 border-sage-100 focus:ring-primary focus:border-primary"
                     />
                   </div>
-                  
+
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                      <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2 ml-1">
                         Email *
                       </label>
                       <Input
@@ -194,10 +209,11 @@ const Consultation = () => {
                         onChange={handleChange}
                         placeholder="your@email.com"
                         required
+                        className="h-12 bg-sage-50/50 border-sage-100 focus:ring-primary focus:border-primary"
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                      <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2 ml-1">
                         Phone
                       </label>
                       <Input
@@ -206,50 +222,61 @@ const Consultation = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+91 98765 43210"
+                        className="h-12 bg-sage-50/50 border-sage-100 focus:ring-primary focus:border-primary"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="service" className="block text-sm font-medium text-foreground mb-2">
+                    <label htmlFor="service" className="block text-sm font-medium text-foreground mb-2 ml-1">
                       Service Interest *
                     </label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleChange}
-                      required
-                      className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-                    >
-                      <option value="">Select a service</option>
-                      {serviceOptions.map((option) => (
-                        <option key={option} value={option}>{option}</option>
-                      ))}
-                    </select>
+                    <div className="relative">
+                      <select
+                        id="service"
+                        name="service"
+                        value={formData.service}
+                        onChange={handleChange}
+                        required
+                        className="w-full h-12 px-3 rounded-md border border-sage-100 bg-sage-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none"
+                      >
+                        <option value="">Select a service</option>
+                        {serviceOptions.map((option) => (
+                          <option key={option} value={option}>{option}</option>
+                        ))}
+                      </select>
+                      <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground">
+                        <ArrowRight className="h-4 w-4 rotate-90" />
+                      </div>
+                    </div>
                   </div>
 
                   <div>
-                    <label htmlFor="consultationType" className="block text-sm font-medium text-foreground mb-2">
+                    <label htmlFor="consultationType" className="block text-sm font-medium text-foreground mb-2 ml-1">
                       Consultation Type *
                     </label>
-                    <select
-                      id="consultationType"
-                      name="consultationType"
-                      value={formData.consultationType}
-                      onChange={handleChange}
-                      required
-                      className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-                    >
-                      <option value="">Select preference</option>
-                      <option value="online">Online (Video Call)</option>
-                      <option value="offline">In-Person (At Center)</option>
-                      <option value="flexible">Flexible</option>
-                    </select>
+                    <div className="relative">
+                      <select
+                        id="consultationType"
+                        name="consultationType"
+                        value={formData.consultationType}
+                        onChange={handleChange}
+                        required
+                        className="w-full h-12 px-3 rounded-md border border-sage-100 bg-sage-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none"
+                      >
+                        <option value="">Select preference</option>
+                        <option value="online">Online (Video Call)</option>
+                        <option value="offline">In-Person (At Center)</option>
+                        <option value="flexible">Flexible</option>
+                      </select>
+                      <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground">
+                        <ArrowRight className="h-4 w-4 rotate-90" />
+                      </div>
+                    </div>
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                    <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2 ml-1">
                       Tell Us About Your Goals
                     </label>
                     <Textarea
@@ -259,10 +286,11 @@ const Consultation = () => {
                       onChange={handleChange}
                       placeholder="Share any specific concerns or goals you'd like to discuss..."
                       rows={4}
+                      className="bg-sage-50/50 border-sage-100 focus:ring-primary focus:border-primary resize-none"
                     />
                   </div>
 
-                  <Button type="submit" variant="zen" size="lg" className="w-full">
+                  <Button type="submit" size="lg" className="w-full h-12 text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
                     Request Consultation
                   </Button>
 

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SectionHeader from "@/components/shared/SectionHeader";
-import { Clock, Users, Award, BookOpen, ArrowRight, CheckCircle } from "lucide-react";
+import { Clock, Users, Award, BookOpen, ArrowRight, CheckCircle, GraduationCap, Calendar } from "lucide-react";
 
 const programs = [
   {
@@ -17,6 +17,8 @@ const programs = [
       "Learn relaxation and stress management tools",
     ],
     schedule: "3 sessions/week, 75 minutes each",
+    color: "bg-sage-50",
+    iconColor: "text-sage-600"
   },
   {
     title: "Advanced Yoga Practitioner",
@@ -31,6 +33,8 @@ const programs = [
       "Preparation for teaching or personal mastery",
     ],
     schedule: "3 sessions/week, 90 minutes each",
+    color: "bg-blue-50",
+    iconColor: "text-blue-600"
   },
   {
     title: "Therapeutic Yoga Certification",
@@ -45,6 +49,8 @@ const programs = [
       "Clinical internship experience",
     ],
     schedule: "Weekends + 2 weekday evenings",
+    color: "bg-amber-50",
+    iconColor: "text-amber-600"
   },
   {
     title: "Meditation Teacher Training",
@@ -59,24 +65,29 @@ const programs = [
       "Understanding of meditation science",
     ],
     schedule: "Weekend intensives + online modules",
+    color: "bg-purple-50",
+    iconColor: "text-purple-600"
   },
 ];
 
 const Training = () => {
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="zen-section bg-sage-light">
-        <div className="zen-container">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-sm font-sans font-medium text-primary tracking-widest uppercase mb-4 animate-fade-in-up">
-              Training Programs
-            </p>
-            <h1 className="zen-heading-1 text-foreground mb-6 animate-fade-in-up animation-delay-100">
-              Deepen Your Practice, <span className="text-primary">Expand Your Path</span>
+      <section className="relative items-center justify-center pt-32 pb-20 md:pb-32 bg-sage-50/50 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1599901868618-eca80330dbee?q=80&w=2800&auto=format&fit=crop')] bg-cover bg-center opacity-5" />
+        <div className="zen-container relative z-10 text-center">
+          <div className="max-w-4xl mx-auto space-y-8 animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 border border-sage-200 rounded-full px-4 py-1.5 backdrop-blur-sm bg-white/50 mb-6">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-primary">Academy of Yoga</span>
+            </div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium text-foreground tracking-tight leading-tight">
+              Deepen Your <span className="italic text-sage-600">Practice</span>, <br className="hidden md:block" />
+              Expand Your <span className="text-primary">Path</span>
             </h1>
-            <p className="zen-body animate-fade-in-up animation-delay-200">
-              Whether you're beginning your yoga journey or seeking professional certification, 
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light">
+              Whether you're beginning your yoga journey or seeking professional certification,
               our structured training programs offer comprehensive education in the yogic arts.
             </p>
           </div>
@@ -84,72 +95,95 @@ const Training = () => {
       </section>
 
       {/* Programs */}
-      <section className="zen-section">
+      <section className="py-20 md:py-32 bg-white">
         <div className="zen-container">
-          <div className="space-y-12">
+          <SectionHeader
+            subtitle="Our Curriculum"
+            title="Training Programs"
+            description="Expert-led courses designed to take your practice and teaching to the next level."
+            className="mb-16"
+          />
+          <div className="space-y-16">
             {programs.map((program, index) => (
-              <div 
+              <div
                 key={program.title}
-                className="zen-card animate-fade-in-up"
+                className="group relative bg-white rounded-3xl border border-border/40 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden animate-fade-in-up"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="grid lg:grid-cols-3 gap-8">
-                  <div className="lg:col-span-2">
-                    <div className="flex flex-wrap items-center gap-3 mb-4">
-                      <span className="text-xs bg-primary text-primary-foreground px-3 py-1 rounded-full">
-                        {program.level}
-                      </span>
-                      <span className="text-xs bg-sage-light text-primary px-3 py-1 rounded-full">
-                        {program.format}
-                      </span>
-                    </div>
-                    <h2 className="zen-heading-3 text-foreground mb-4">{program.title}</h2>
-                    <p className="text-muted-foreground mb-6">{program.purpose}</p>
-                    
-                    <h4 className="font-serif font-medium text-foreground mb-3">What You'll Achieve:</h4>
-                    <ul className="space-y-2 mb-6">
-                      {program.outcomes.map((outcome) => (
-                        <li key={outcome} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                          {outcome}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <div className="bg-sage-light rounded-lg p-6 h-fit">
-                    <h4 className="font-serif font-medium text-foreground mb-4">Program Details</h4>
+                <div className={`absolute top-0 left-0 w-2 h-full ${program.color.replace('bg-', 'bg-sage-300 ')} group-hover:w-full opacity-10 transition-all duration-700`} />
+
+                <div className="relative p-8 md:p-12 grid lg:grid-cols-3 gap-12">
+                  <div className="lg:col-span-2 space-y-8">
                     <div className="space-y-4">
-                      <div className="flex items-center gap-3">
-                        <Clock className="h-5 w-5 text-primary" />
+                      <div className="flex flex-wrap items-center gap-3">
+                        <span className="text-xs font-bold uppercase tracking-wider bg-primary/10 text-primary px-3 py-1 rounded-full">
+                          {program.level}
+                        </span>
+                        <span className="text-xs font-bold uppercase tracking-wider bg-secondary/50 text-secondary-foreground px-3 py-1 rounded-full border border-secondary">
+                          {program.format}
+                        </span>
+                      </div>
+                      <h2 className="text-3xl md:text-4xl font-serif font-medium text-foreground group-hover:text-primary transition-colors duration-300">
+                        {program.title}
+                      </h2>
+                      <p className="text-lg text-muted-foreground leading-relaxed font-light max-w-2xl">
+                        {program.purpose}
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="flex items-center gap-2 font-serif font-medium text-foreground text-lg mb-4">
+                        <GraduationCap className="h-5 w-5 text-primary" />
+                        What You'll Achieve
+                      </h4>
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        {program.outcomes.map((outcome) => (
+                          <div key={outcome} className="flex items-start gap-3 text-sm text-muted-foreground group/item hover:text-foreground transition-colors">
+                            <CheckCircle className="h-4 w-4 text-primary/60 mt-0.5 flex-shrink-0 group-hover/item:text-primary" />
+                            <span>{outcome}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="lg:border-l border-border/40 lg:pl-12 flex flex-col justify-center space-y-8">
+                    <div className="space-y-6 bg-sage-50/50 p-6 rounded-2xl border border-sage-100/50">
+                      <div className="flex items-center gap-4">
+                        <div className={`p-2.5 rounded-xl bg-white shadow-sm ${program.iconColor}`}>
+                          <Clock className="h-5 w-5" />
+                        </div>
                         <div>
-                          <p className="text-xs text-muted-foreground">Duration</p>
+                          <p className="text-xs text-muted-foreground uppercase opacity-70 font-semibold tracking-wider">Duration</p>
                           <p className="text-sm font-medium text-foreground">{program.duration}</p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-3">
-                        <Users className="h-5 w-5 text-primary" />
+                      <div className="flex items-center gap-4">
+                        <div className={`p-2.5 rounded-xl bg-white shadow-sm ${program.iconColor}`}>
+                          <Users className="h-5 w-5" />
+                        </div>
                         <div>
-                          <p className="text-xs text-muted-foreground">Format</p>
+                          <p className="text-xs text-muted-foreground uppercase opacity-70 font-semibold tracking-wider">Format</p>
                           <p className="text-sm font-medium text-foreground">{program.format}</p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-3">
-                        <BookOpen className="h-5 w-5 text-primary" />
+                      <div className="flex items-center gap-4">
+                        <div className={`p-2.5 rounded-xl bg-white shadow-sm ${program.iconColor}`}>
+                          <Calendar className="h-5 w-5" />
+                        </div>
                         <div>
-                          <p className="text-xs text-muted-foreground">Schedule</p>
+                          <p className="text-xs text-muted-foreground uppercase opacity-70 font-semibold tracking-wider">Schedule</p>
                           <p className="text-sm font-medium text-foreground">{program.schedule}</p>
                         </div>
                       </div>
                     </div>
-                    <div className="mt-6">
-                      <Link to="/consultation">
-                        <Button variant="zen" className="w-full">
-                          Inquire About This Program
-                          <ArrowRight className="h-4 w-4 ml-1" />
-                        </Button>
-                      </Link>
-                    </div>
+
+                    <Link to="/consultation" className="block">
+                      <Button className="w-full h-12 text-base shadow-md group-hover:shadow-lg transition-all">
+                        Inquire Now
+                        <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -159,31 +193,32 @@ const Training = () => {
       </section>
 
       {/* Why Train With Us */}
-      <section className="zen-section bg-card">
-        <div className="zen-container">
+      <section className="py-20 md:py-32 bg-sage-50 relative overflow-hidden">
+        <div className="zen-container relative z-10">
           <SectionHeader
             subtitle="Why Choose Vimukti"
             title="Excellence in Yoga Education"
+            className="mb-16"
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { icon: Award, title: "Certified Programs", description: "All programs meet international standards and provide recognized certifications." },
               { icon: Users, title: "Expert Faculty", description: "Learn from master teachers with decades of practice and teaching experience." },
               { icon: BookOpen, title: "Comprehensive Curriculum", description: "Traditional teachings integrated with modern anatomy and science." },
               { icon: Clock, title: "Flexible Options", description: "Multiple formats available including weekends, intensives, and hybrid programs." },
             ].map((item, index) => (
-              <div 
+              <div
                 key={item.title}
-                className="text-center p-6 animate-fade-in-up"
+                className="group bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 animate-fade-in-up"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="p-4 bg-sage-light rounded-full w-fit mx-auto mb-4">
-                  <item.icon className="h-6 w-6 text-primary" />
+                <div className="w-16 h-16 bg-sage-50 rounded-2xl flex items-center justify-center mx-auto mb-6 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                  <item.icon className="h-7 w-7" />
                 </div>
-                <h3 className="font-serif font-medium text-foreground mb-2">
+                <h3 className="font-serif font-medium text-foreground text-xl mb-3 text-center">
                   {item.title}
                 </h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-muted-foreground text-center leading-relaxed">
                   {item.description}
                 </p>
               </div>
@@ -193,19 +228,19 @@ const Training = () => {
       </section>
 
       {/* CTA */}
-      <section className="zen-section bg-primary">
-        <div className="zen-container text-center">
-          <h2 className="zen-heading-2 text-primary-foreground mb-4 animate-fade-in-up">
+      <section className="py-24 bg-sage-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1599447421405-0c1a1143296f?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay" />
+        <div className="zen-container relative z-10 text-center">
+          <h2 className="text-4xl md:text-5xl font-serif font-medium text-white mb-6 animate-fade-in-up">
             Ready to Transform Your Practice?
           </h2>
-          <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto animate-fade-in-up animation-delay-100">
+          <p className="text-lg text-sage-200 mb-10 max-w-2xl mx-auto animate-fade-in-up animation-delay-100 font-light">
             Connect with our program advisors to find the perfect training path for your goals.
           </p>
           <Link to="/consultation" className="animate-fade-in-up animation-delay-200 inline-block">
-            <Button 
-              variant="outline" 
-              size="xl" 
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 border-primary-foreground"
+            <Button
+              size="xl"
+              className="bg-white text-sage-900 hover:bg-sage-100 border-none h-14 px-8 text-lg font-medium"
             >
               Schedule a Program Consultation
             </Button>
