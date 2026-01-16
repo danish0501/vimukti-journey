@@ -24,10 +24,9 @@ const Footer = () => {
               ESTD 2024. A legacy of authentic yoga.
             </p>
             <div className="flex gap-4 pt-2">
-              <SocialLink icon={Instagram} label="Instagram" />
-              <SocialLink icon={Facebook} label="Facebook" />
-              <SocialLink icon={Linkedin} label="LinkedIn" />
-              <SocialLink icon={Youtube} label="Youtube" />
+              <SocialLink href="https://www.facebook.com/Vimuktiyoga/" icon={Facebook} label="Facebook" />
+              <SocialLink href="https://in.linkedin.com/in/sachin-sughosha-yelve-441b7122a" icon={Linkedin} label="LinkedIn" />
+              <SocialLink href="https://www.youtube.com/@vimuktiyoganaturallife" icon={Youtube} label="Youtube" />
             </div>
           </div>
 
@@ -36,22 +35,23 @@ const Footer = () => {
             <h4 className="text-lg font-serif font-medium mb-6">Quick Links</h4>
             <ul className="space-y-3">
               <FooterLink to="/about" label="About Us" />
-              <FooterLink to="/about#legacy" label="Our Legacy" />
+              <FooterLink to="/services" label="Services" />
               <FooterLink to="/contact" label="Contact Us" />
-              <FooterLink to="/blog" label="Blog" />
               <FooterLink to="/consultation" label="Book Consultation" />
             </ul>
           </div>
 
           {/* Courses */}
           <div>
-            <h4 className="text-lg font-serif font-medium mb-6">Our Courses</h4>
+            <h4 className="text-lg font-serif font-medium mb-6">Our Services</h4>
             <ul className="space-y-3">
-              <FooterLink to="/training#ttc" label="Teacher Training" />
-              <FooterLink to="/training#regular" label="Regular Classes" />
-              <FooterLink to="/therapy" label="Yoga Therapy" />
-              <FooterLink to="/events" label="Workshops" />
-              <FooterLink to="/events#retreats" label="Retreats" />
+              <FooterLink to="/training#ttc" label="Personal Yoga Classes" />
+              <FooterLink to="/training#regular" label="Yoga Therapy" />
+              <FooterLink to="/therapy" label="Naturopathy" />
+              <FooterLink to="/events" label="Rope & Belt Therapy" />
+              <FooterLink to="/events#retreats" label="Mindfulness Programs" />
+              <FooterLink to="/events#retreats" label="Meditation Classes" />
+              <FooterLink to="/events#retreats" label="Wellness Retreats" />
             </ul>
           </div>
 
@@ -60,30 +60,20 @@ const Footer = () => {
             <h4 className="text-lg font-serif font-medium mb-6">Stay Connected</h4>
             <ul className="space-y-4 mb-8">
               <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 mt-0.5 opacity-70" />
+                <MapPin className="h-5 w-5 mt-0.5 opacity-70 shrink-0" />
                 <span className="text-sm opacity-80">
-                  123 Wellness Street, Serenity Road, Mumbai 400001
+                  4th floor, Ashram kant darshan Darbar, plot no 315-316, Sarsole Gaon, Sector 6, Nerul, Navi Mumbai, Maharashtra 400706
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="h-5 w-5 opacity-70" />
-                <span className="text-sm opacity-80">+91 98765 43210</span>
+                <Phone className="h-5 w-5 opacity-70 shrink-0" />
+                <span className="text-sm opacity-80">+91 7710021009</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail className="h-5 w-5 opacity-70 shrink-0" />
+                <span className="text-sm opacity-80">vimuktiyoga2015@gmail.com</span>
               </li>
             </ul>
-
-            <div className="space-y-2">
-              <p className="text-xs font-medium opacity-70 uppercase tracking-wider">Subscribe to Newsletter</p>
-              <div className="flex gap-2">
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  className="bg-white/10 border border-white/20 rounded-md px-3 py-2 text-sm text-cream placeholder:text-cream/40 focus:outline-none focus:border-sage-light w-full"
-                />
-                <button className="bg-sage-light text-foreground px-3 py-2 rounded-md font-medium text-xs hover:bg-sage transition-colors">
-                  Join
-                </button>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -104,9 +94,11 @@ const Footer = () => {
   );
 };
 
-const SocialLink = ({ icon: Icon, label }: { icon: any, label: string }) => (
+const SocialLink = ({ icon: Icon, label, href }: { icon: any, label: string, href: string }) => (
   <a
-    href="#"
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
     className="p-2 bg-cream/10 rounded-full hover:bg-cream/20 transition-colors group"
     aria-label={label}
   >

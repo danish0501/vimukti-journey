@@ -13,6 +13,7 @@ import Therapy from "./pages/Therapy";
 import Training from "./pages/Training";
 import Consultation from "./pages/Consultation";
 import Events from "./pages/Events";
+import Gallery from "./pages/Gallery";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -37,6 +38,7 @@ const App = () => (
             <Route path="/consultation" element={<Consultation />} />
             <Route path="/events" element={<Events />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

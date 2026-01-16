@@ -180,24 +180,24 @@ const Contact = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-sage-900 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1599447421405-0c1a1143296f?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay" />
+      <section className="py-24 bg-sage-50 relative overflow-hidden">
         <div className="zen-container relative z-10 text-center">
-          <h2 className="text-4xl md:text-5xl font-serif font-medium text-white mb-6 animate-fade-in-up">
-            Begin Your Journey Today
+          <h2 className="text-4xl md:text-5xl font-serif font-medium text-foreground mb-6 animate-fade-in-up">
+            Ready to Prioritize Your Wellness?
           </h2>
-          <p className="text-lg text-sage-200 mb-10 max-w-2xl mx-auto animate-fade-in-up animation-delay-100 font-light">
-            Ready to transform your life through yoga and holistic wellness?
-            Take the first step by scheduling a consultation.
+          <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto animate-fade-in-up animation-delay-100 font-light">
+            Take the first step towards a healthier, balanced life. Schedule your personalized consultation with our experts today.
           </p>
-          <Link to="/consultation" className="animate-fade-in-up animation-delay-200 inline-block">
-            <Button
-              size="xl"
-              className="bg-white text-sage-900 hover:bg-sage-100 border-none h-14 px-8 text-lg font-medium shadow-xl hover:scale-105 transition-all"
-            >
-              Book a Consultation
-            </Button>
-          </Link>
+          <div className="flex justify-center animate-fade-in-up animation-delay-200">
+            <Link to="/consultation">
+              <Button
+                size="xl"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 min-w-[200px] h-14 text-lg shadow-lg hover:shadow-primary/25 rounded-full px-8"
+              >
+                Book a Consultation
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
     </div>

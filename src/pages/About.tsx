@@ -12,30 +12,6 @@ const instructors = [
     bio: "Founder of Vimukti Yoga with an M.Sc. in Yoga from SVYASA University. Sachin combines traditional Hatha Yoga with Naturopathy and Mindfulness to offer a truly holistic healing experience.",
     image: "bg-sage-100",
   },
-  {
-    name: "Guru Ramesh Iyer",
-    role: "Senior Hatha Yoga Instructor",
-    experience: "20+ years",
-    specialization: "Classical Hatha, Meditation",
-    bio: "Trained in the Sivananda tradition, Guru Ramesh brings authentic classical yoga teachings with a focus on spiritual growth and self-realization.",
-    image: "bg-amber-100",
-  },
-  {
-    name: "Priya Menon",
-    role: "Naturopathy Consultant",
-    experience: "15+ years",
-    specialization: "Naturopathy, Diet Therapy",
-    bio: "A certified naturopath with expertise in holistic nutrition and lifestyle medicine. Priya integrates traditional healing with modern wellness practices.",
-    image: "bg-green-100",
-  },
-  {
-    name: "Vikram Desai",
-    role: "Meditation & Mindfulness Coach",
-    experience: "12+ years",
-    specialization: "Vipassana, Mindfulness-Based Stress Reduction",
-    bio: "Having practiced meditation across various traditions, Vikram specializes in making ancient techniques accessible and practical for modern life.",
-    image: "bg-blue-100",
-  },
 ];
 
 const milestones = [
@@ -80,7 +56,7 @@ const About = () => {
               <div>
                 <span className="text-sm font-medium text-primary uppercase tracking-widest mb-3 block">Our Story</span>
                 <h2 className="text-3xl md:text-5xl font-serif font-medium text-foreground mb-6 leading-tight">
-                  A Journey of <span className="italic text-sage-light">Healing</span>
+                  A Journey of <span className="italic text-primary">Healing</span>
                 </h2>
               </div>
 
@@ -204,64 +180,64 @@ const About = () => {
         </div>
       </section>
 
-      {/* Our Team */}
+      {/* Founder Section */}
       <section className="py-20 md:py-32 bg-background border-t border-border/30">
         <div className="zen-container">
           <SectionHeader
-            subtitle="Our Team"
-            title="Meet Our Expert Instructors"
-            description="Our team of certified professionals brings decades of combined experience in yoga, therapy, and holistic wellness."
+            subtitle="Founder"
+            title="Meet the Founder"
+            description="Dedicated to spreading the authentic wisdom of Yoga and holistic healing."
           />
-          <div className="grid md:grid-cols-2 gap-8 pt-12">
-            {instructors.map((instructor, index) => (
-              <div
-                key={instructor.name}
-                className="group bg-white rounded-3xl p-6 md:p-8 border border-border/50 hover:border-primary/20 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 animate-fade-in-up"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="flex flex-col sm:flex-row gap-8 items-start">
-                  <div className={`w-28 h-28 ${instructor.image} rounded-2xl flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-105 transition-transform duration-500`}>
-                    <span className="text-3xl font-serif text-foreground/40 font-bold">
-                      {instructor.name.split(" ").map(n => n[0]).join("")}
-                    </span>
+          <div className="flex justify-center pt-12">
+            <div className="max-w-4xl w-full group bg-white rounded-3xl p-8 md:p-12 border border-border/50 hover:border-primary/20 shadow-sm hover:shadow-xl transition-all duration-500 animate-fade-in-up">
+              <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
+                <div className="w-40 h-40 md:w-56 md:h-56 bg-sage-100 rounded-full flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-105 transition-transform duration-500 relative overflow-hidden">
+                  <span className="text-5xl font-serif text-foreground/40 font-bold z-10">
+                    SY
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-sage-200/50 to-transparent" />
+                </div>
+                <div className="space-y-6 flex-1 text-center md:text-left">
+                  <div>
+                    <h3 className="font-serif font-medium text-3xl md:text-4xl text-foreground mb-2 group-hover:text-primary transition-colors">
+                      Sachin Yelve
+                    </h3>
+                    <p className="text-lg font-medium text-primary uppercase tracking-wider">Founder & Lead Yoga Consultant</p>
                   </div>
-                  <div className="space-y-4">
-                    <div>
-                      <h3 className="font-serif font-medium text-2xl text-foreground mb-1 group-hover:text-primary transition-colors">
-                        {instructor.name}
-                      </h3>
-                      <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{instructor.role}</p>
-                    </div>
 
-                    <div className="flex flex-wrap gap-2 text-xs">
-                      <span className="px-2.5 py-1 bg-sage-50 text-sage-700 rounded-md font-medium">{instructor.experience}</span>
-                      <span className="px-2.5 py-1 bg-blue-50 text-blue-700 rounded-md font-medium">{instructor.specialization}</span>
-                    </div>
+                  <div className="flex flex-wrap justify-center md:justify-start gap-3 text-sm">
+                    <span className="px-3 py-1.5 bg-sage-50 text-sage-800 rounded-full font-medium border border-sage-100">9+ Years Experience</span>
+                    <span className="px-3 py-1.5 bg-blue-50 text-blue-800 rounded-full font-medium border border-blue-100">M.Sc in Yoga</span>
+                    <span className="px-3 py-1.5 bg-amber-50 text-amber-800 rounded-full font-medium border border-amber-100">Naturopathy Expert</span>
+                  </div>
 
-                    <p className="text-muted-foreground leading-relaxed font-light">"{instructor.bio}"</p>
+                  <div className="relative">
+                    <Quote className="absolute -top-2 -left-4 w-6 h-6 text-primary/20 transform -scale-x-100" />
+                    <p className="text-muted-foreground leading-relaxed font-light text-lg px-2">
+                      Founder of Vimukti Yoga with an M.Sc. in Yoga from SVYASA University. Sachin combines traditional Hatha Yoga with Naturopathy and Mindfulness to offer a truly holistic healing experience, helping individuals find freedom from suffering.
+                    </p>
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-sage-900 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1599901868618-eca80330dbee?q=80&w=2800&auto=format&fit=crop')] bg-cover bg-fixed opacity-10 mix-blend-overlay" />
+      <section className="py-24 bg-sage-50 relative overflow-hidden">
         <div className="zen-container relative z-10 text-center">
-          <h2 className="text-4xl md:text-6xl font-serif font-medium text-white mb-6 animate-fade-in-up">
+          <h2 className="text-4xl md:text-5xl font-serif font-medium text-foreground mb-6 animate-fade-in-up">
             Ready to Begin Your Journey?
           </h2>
-          <p className="text-lg md:text-xl text-sage-200 mb-10 max-w-2xl mx-auto animate-fade-in-up animation-delay-100 font-light">
-            Connect with our team and discover how Vimukti can support your wellness goals with our personalized holistic programs.
+          <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto animate-fade-in-up animation-delay-100 font-light">
+            Connect with us and discover how Vimukti can support your wellness goals with our personalized holistic programs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-200">
             <Link to="/consultation">
               <Button
                 size="xl"
-                className="bg-white text-sage-900 hover:bg-sage-100 border-none min-w-[200px] h-14"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 min-w-[200px] h-14 text-lg shadow-lg hover:shadow-primary/25 rounded-full"
               >
                 Schedule a Consultation
               </Button>
@@ -270,7 +246,7 @@ const About = () => {
               <Button
                 variant="outline"
                 size="xl"
-                className="bg-transparent text-white border-white hover:bg-white/10 min-w-[200px] h-14"
+                className="bg-white border-primary text-primary hover:bg-primary hover:text-white min-w-[200px] h-14 text-lg rounded-full"
               >
                 Contact Us
               </Button>

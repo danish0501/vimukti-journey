@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, Heart, Sun } from "lucide-react";
+import { ArrowRight, Heart, Sun, UserCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -9,34 +9,34 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import off1 from "@/assets/offering-1.jpg";
-import off2 from "@/assets/offering-2.jpg";
-import off3 from "@/assets/offering-3.jpg";
+import serv1 from "@/assets/wellness-1.jpg";
+import serv2 from "@/assets/wellness-2.jpg";
+import serv3 from "@/assets/wellness-3.jpg";
 
-const offerings = [
+const services = [
     {
-        icon: BookOpen,
-        title: "Teacher Training",
-        desc: "Become a certified yoga teacher with our globally recognized TTC programs.",
-        link: "/training",
+        icon: UserCheck,
+        title: "Personal Yoga",
+        desc: "Customized one-on-one sessions tailored to your specific health goals and physical capabilities.",
+        link: "/services",
         color: "bg-orange-100 text-orange-600",
-        image: off1,
-    },
-    {
-        icon: Sun,
-        title: "Regular Classes",
-        desc: "Daily online and offline sessions for all levels to maintain health and vitality.",
-        link: "/training",
-        color: "bg-blue-100 text-blue-600",
-        image: off2,
+        image: serv1,
     },
     {
         icon: Heart,
         title: "Yoga Therapy",
-        desc: "Specialized care for chronic ailments, mental health, and rehabilitation.",
-        link: "/therapy",
+        desc: "Therapeutic yoga interventions for managing chronic ailments and promoting holistic healing.",
+        link: "/services",
         color: "bg-green-100 text-green-600",
-        image: off3,
+        image: serv2,
+    },
+    {
+        icon: Sun,
+        title: "Naturopathy",
+        desc: "Natural healing treatments using the five elements of nature to restore body balance.",
+        link: "/services",
+        color: "bg-blue-100 text-blue-600",
+        image: serv3,
     },
 ];
 
@@ -46,20 +46,20 @@ const Offerings = () => {
             <div className="zen-container">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6 animate-fade-in-up">
                     <div className="max-w-2xl">
-                        <span className="text-sm font-medium text-primary uppercase tracking-widest mb-3 block">Our Offerings</span>
+                        <span className="text-sm font-medium text-primary uppercase tracking-widest mb-3 block">Our Services</span>
                         <h2 className="text-3xl md:text-5xl font-serif font-medium text-foreground leading-tight">
-                            Holistic Programs for <br /><span className="italic text-primary/80">Every Stage of Life</span>
+                            Holistic Services for <br /><span className="italic text-primary/80">Complete Well-being</span>
                         </h2>
                     </div>
                     <Link to="/services">
                         <Button variant="outline" size="lg" className="gap-2 bg-transparent border-primary/20 hover:bg-white hover:border-transparent shadow-sm">
-                            View All Programs <ArrowRight className="h-4 w-4" />
+                            View All Services <ArrowRight className="h-4 w-4" />
                         </Button>
                     </Link>
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {offerings.map((item, index) => (
+                    {services.map((item, index) => (
                         <Card
                             key={item.title}
                             className="border-none shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 overflow-hidden group bg-white animate-fade-in-up"

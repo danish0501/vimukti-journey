@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-new.jpg";
+import heroImage from "@/assets/hero-yoga.jpg";
 
 const Hero = () => {
     return (
-        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+        <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden">
             {/* Background with Slow Zoom Parallax effect */}
             <div className="absolute inset-0 overflow-hidden">
                 <div
@@ -33,23 +33,16 @@ const Hero = () => {
 
                     <div className="flex flex-col sm:flex-row justify-center gap-4 pt-8 animate-fade-in-up" style={{ animationDelay: '700ms' }}>
                         <Link to="/consultation" className="w-full sm:w-auto">
-                            <Button size="xl" className="w-full bg-sage-light text-sage-900 hover:bg-white hover:text-sage-950 transition-all duration-300 text-lg h-14 shadow-lg hover:shadow-xl hover:-translate-y-1">
+                            <Button size="xl" className="w-full bg-[#568F6E] text-sage-900 hover:text-sage-950 transition-all duration-300 text-lg h-14 shadow-lg hover:shadow-xl hover:-translate-y-1">
                                 Start Your Journey
                             </Button>
                         </Link>
                         <Link to="/services" className="w-full sm:w-auto">
-                            <Button variant="outline" size="xl" className="w-full bg-transparent text-white border-white hover:bg-white/20 transition-all duration-300 text-lg h-14 backdrop-blur-sm shadow-lg hover:shadow-xl hover:-translate-y-1">
+                            <Button variant="outline" size="xl" className="w-full bg-transparent text-white border-white hover:bg-[#568F6E] hover:border-[#568F6E] hover:text-white transition-all duration-300 text-lg h-14 backdrop-blur-sm shadow-lg hover:shadow-xl hover:-translate-y-1">
                                 Explore Services
                             </Button>
                         </Link>
                     </div>
-                </div>
-            </div>
-
-            {/* Scroll Indicator */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-                    <div className="w-1.5 h-1.5 bg-white rounded-full mt-2 animate-ping" />
                 </div>
             </div>
         </section>

@@ -157,23 +157,22 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-sage-900 relative overflow-hidden text-white">
-        <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1599901868618-eca80330dbee?q=80&w=2800&auto=format&fit=crop')] bg-cover bg-fixed center" />
+      <section className="py-24 bg-sage-50 relative overflow-hidden">
         <div className="zen-container relative z-10 text-center space-y-8">
-          <h2 className="text-3xl md:text-5xl font-serif mb-6 animate-fade-in-up">
+          <h2 className="text-4xl md:text-5xl font-serif font-medium text-foreground mb-6 animate-fade-in-up">
             Begin Your Journey Today
           </h2>
-          <p className="text-sage-200 max-w-2xl mx-auto text-lg mb-8 animate-fade-in-up animation-delay-100">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-in-up animation-delay-100 font-light">
             Whether you're seeking relief from chronic pain, looking to de-stress, or wanting to deepen your yoga practice, we're here to guide you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-200">
             <Link to="/contact">
-              <Button size="xl" className="bg-white text-sage-900 hover:bg-sage-100 border-none min-w-[200px]">
+              <Button size="xl" className="bg-primary text-primary-foreground hover:bg-primary/90 min-w-[200px] h-14 text-lg shadow-lg hover:shadow-primary/25 rounded-full">
                 Book Appointment
               </Button>
             </Link>
             <Link to="/contact">
-              <Button size="xl" variant="outline" className="text-white border-white hover:bg-white/10 min-w-[200px]">
+              <Button size="xl" variant="outline" className="bg-white border-primary text-primary hover:bg-primary hover:text-white min-w-[200px] h-14 text-lg rounded-full">
                 Enquire Now
               </Button>
             </Link>

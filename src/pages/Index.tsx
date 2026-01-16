@@ -1,21 +1,21 @@
 import Hero from "@/components/home/Hero";
 import Intro from "@/components/home/Intro";
-import Legacy from "@/components/home/Legacy";
+// import Legacy from "@/components/home/Legacy";
 import Offerings from "@/components/home/Offerings";
-import Wellness from "@/components/home/Wellness";
+// import Wellness from "@/components/home/Wellness";
 import Testimonials from "@/components/home/Testimonials";
-import BlogFeed from "@/components/home/BlogFeed";
+// import BlogFeed from "@/components/home/BlogFeed";
 
 const Index = () => {
   return (
     <div className="overflow-hidden">
       <Hero />
       <Intro />
-      <Legacy />
+      {/* <Legacy /> */}
       <Offerings />
-      <Wellness />
+      {/* <Wellness /> */}
       <Testimonials />
-      <BlogFeed />
+      {/* <BlogFeed /> */}
     </div>
   );
 };
