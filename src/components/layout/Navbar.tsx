@@ -1,4 +1,5 @@
 import { useState } from "react";
+import logo from "@/assets/logo.png";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -42,15 +43,9 @@ const Navbar = () => {
       <nav className="zen-container">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
+          {/* Logo */}
           <Link to="/" className="flex-shrink-0 z-50">
-            <div className="flex flex-col">
-              <h1 className="text-xl md:text-2xl font-serif font-medium text-foreground tracking-tight leading-none">
-                Vimukti <span className="text-primary">Yoga</span>
-              </h1>
-              <p className="text-[10px] text-muted-foreground tracking-widest uppercase mt-0.5">
-                & Wellness Centre
-              </p>
-            </div>
+            <img src={logo} alt="Vimukti Yoga" className="h-16 w-auto object-contain" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -72,7 +67,7 @@ const Navbar = () => {
 
           {/* CTA Button - Desktop */}
           <div className="hidden lg:block ml-4">
-            <Link to="/consultation">
+            <Link to="/contact">
               <Button variant="zen" size="lg" className="shadow-md hover:shadow-lg transition-all">
                 Book Consultation
               </Button>
@@ -111,7 +106,7 @@ const Navbar = () => {
             </div>
 
             <div className="pt-6">
-              <Link to="/consultation" onClick={() => setIsOpen(false)}>
+              <Link to="/contact" onClick={() => setIsOpen(false)}>
                 <Button variant="zen" size="lg" className="w-full text-lg h-12">
                   Book Consultation
                 </Button>

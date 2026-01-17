@@ -1,21 +1,17 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react";
+import logo from "@/assets/logo.png";
+import { Facebook, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-foreground text-cream">
-      <div className="zen-container py-16">
+    <footer className="bg-foreground text-cream relative z-50">
+      <div className="zen-container pt-12 pb-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand Bio */}
           <div className="space-y-4 lg:col-span-2">
-            <div>
-              <h3 className="text-2xl font-serif font-medium">
-                Vimukti <span className="text-sage-light">Yoga</span>
-              </h3>
-              <p className="text-xs tracking-widest uppercase opacity-70">
-                & Wellness Centre
-              </p>
-            </div>
+            {/* <div>
+              <img src={logo} alt="Vimukti Yoga" className="h-20 w-auto object-contain" />
+            </div> */}
             <p className="text-sm leading-relaxed opacity-80 max-w-sm">
               Dedicated to holistic healing through traditional yogic practices,
               naturopathy, and modern wellness science. Experience freedom from
@@ -34,10 +30,11 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-serif font-medium mb-6">Quick Links</h4>
             <ul className="space-y-3">
+              <FooterLink to="/" label="Home" />
               <FooterLink to="/about" label="About Us" />
               <FooterLink to="/services" label="Services" />
               <FooterLink to="/contact" label="Contact Us" />
-              <FooterLink to="/consultation" label="Book Consultation" />
+              <FooterLink to="/contact" label="Book Consultation" />
             </ul>
           </div>
 
@@ -45,17 +42,17 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-serif font-medium mb-6">Our Services</h4>
             <ul className="space-y-3">
-              <FooterLink to="/training#ttc" label="Personal Yoga Classes" />
-              <FooterLink to="/training#regular" label="Yoga Therapy" />
-              <FooterLink to="/therapy" label="Naturopathy" />
-              <FooterLink to="/events" label="Rope & Belt Therapy" />
-              <FooterLink to="/events#retreats" label="Mindfulness Programs" />
-              <FooterLink to="/events#retreats" label="Meditation Classes" />
-              <FooterLink to="/events#retreats" label="Wellness Retreats" />
+              <FooterLink to="/services" label="Personal Yoga Classes" />
+              <FooterLink to="/services" label="Yoga Therapy" />
+              <FooterLink to="/services" label="Naturopathy" />
+              <FooterLink to="/services" label="Rope & Belt Therapy" />
+              <FooterLink to="/services" label="Mindfulness Programs" />
+              <FooterLink to="/services" label="Meditation Classes" />
+              <FooterLink to="/services" label="Wellness Retreats" />
             </ul>
           </div>
 
-          {/* Contact & Newsletter */}
+          {/* Contact */}
           <div>
             <h4 className="text-lg font-serif font-medium mb-6">Stay Connected</h4>
             <ul className="space-y-4 mb-8">
@@ -67,11 +64,11 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 opacity-70 shrink-0" />
-                <span className="text-sm opacity-80">+91 7710021009</span>
+                <a href="tel:+917710021009" className="text-sm opacity-80 hover:text-white hover:underline transition-all">+91 7710021009</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 opacity-70 shrink-0" />
-                <span className="text-sm opacity-80">vimuktiyoga2015@gmail.com</span>
+                <a href="mailto:vimuktiyoga2015@gmail.com" className="text-sm opacity-80 hover:text-white hover:underline transition-all">vimuktiyoga2015@gmail.com</a>
               </li>
             </ul>
           </div>
@@ -83,7 +80,7 @@ const Footer = () => {
             <p className="text-xs opacity-60 text-center md:text-left">
               © {new Date().getFullYear()} Vimukti Yoga & Wellness Centre. All rights reserved.
             </p>
-            <div className="flex gap-6">
+            <div className="flex gap-6 items-center">
               <Link to="/privacy" className="text-xs opacity-60 hover:opacity-100">Privacy Policy</Link>
               <Link to="/terms" className="text-xs opacity-60 hover:opacity-100">Terms of Service</Link>
             </div>

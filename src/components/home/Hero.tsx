@@ -21,7 +21,7 @@ const Hero = () => {
                         <span className="text-xs md:text-sm font-medium tracking-[0.2em] uppercase">Est. 2024 • Holistic Wellness</span>
                     </div>
 
-                    <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-medium tracking-tight leading-[1.1] drop-shadow-lg">
+                    <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-medium tracking-tight leading-[1.1] drop-shadow-lg">
                         <span className="block animate-fade-in-up" style={{ animationDelay: '100ms' }}>Vimukti Yoga</span>
                         <span className="block italic text-sage-light mt-2 animate-fade-in-up" style={{ animationDelay: '300ms' }}>& Wellness Centre</span>
                     </h1>
@@ -32,7 +32,7 @@ const Hero = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row justify-center gap-4 pt-8 animate-fade-in-up" style={{ animationDelay: '700ms' }}>
-                        <Link to="/consultation" className="w-full sm:w-auto">
+                        <Link to="/contact" className="w-full sm:w-auto">
                             <Button size="xl" className="w-full bg-[#568F6E] text-sage-900 hover:text-sage-950 transition-all duration-300 text-lg h-14 shadow-lg hover:shadow-xl hover:-translate-y-1">
                                 Start Your Journey
                             </Button>
