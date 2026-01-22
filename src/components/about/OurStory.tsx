@@ -82,25 +82,29 @@ const OurStory = () => {
                             </motion.h2>
                         </div>
 
-                        <div className="space-y-8 text-lg md:text-xl text-muted-foreground font-light leading-relaxed">
-                            <motion.p variants={itemVariants}>
-                                <span className="text-foreground font-normal text-2xl float-left mr-2 mt-[-6px]">V</span>
-                                imukti was born from a simple yet profound realization: true wellness
-                                cannot be compartmentalized. The body, mind, and spirit are intricately
-                                connected, and healing one requires nurturing all.
-                            </motion.p>
-
+                        <div className="space-y-4 text-base text-muted-foreground font-light leading-relaxed">
                             <motion.p variants={itemVariants} className="pl-6 border-l-2 border-primary/20">
-                                Founded by <span className="text-foreground font-medium">Sachin Yelve</span>,
-                                an expert in Yoga, Naturopathy, and Mindfulness. With a Master's degree in Yoga
-                                and deep roots in traditional practices, Sachin established Vimukti to offer a path
-                                to freedom from physical ailments and mental stress.
+                                <span className="text-foreground font-normal text-xl float-left mr-1 mt-[-6px]">S</span>
+                                achin Yelve <span className="text-foreground font-medium">( Dh. Sughosh)</span>,
+                                is one of the most widely known and respected yoga teachers in India. He is practicing
+                                Yoga three decade and teaching Yoga for over two decades. Sachin has been trained in the
+                                Hatha Yogi Nikam Guruji , Yoga acharya Sadashiv Nimbalakar ’s Yog Vidya Niketan, and in
+                                Swami Vivekanand yoga Anusandhan Bengaluru. He has a post graduate degree in Yoga therapy.
+                                He has extensive experience teaching individual and group classes for private and corporate
+                                clients in India.
                             </motion.p>
 
                             <motion.p variants={itemVariants}>
-                                We honor the ancient traditions of Hatha Yoga and the therapeutic power of Naturopathy,
-                                while embracing modern scientific understanding to offer programs
-                                that are both authentic and effective.
+                                Through his experience he has acquired remarkable ability to assess his student’s capacities
+                                and limitations. Sachin’s wisdom, his expertise and on-going study of Yoga and philosophy are
+                                a core component of his unique approach. His teaching style is based on understanding of yoga
+                                philosophy as a scientific approach to self-development and self-transformation. His style
+                                reflects on his deep understanding of human anatomy and his ability as a yoga teacher to tailor
+                                the practice sequence to meet his student’s needs. Sachin believes that positive attitude is
+                                essential for practice, to overcome limitations and resistance, and integrate mind, body and
+                                breath. He empowers his students to discover their hidden strengths and educates them on the
+                                underlying philosophy of yoga practice. He inspires his students to incorporate the principles
+                                of yoga in their everyday lives.
                             </motion.p>
                         </div>
                     </motion.div>

@@ -237,7 +237,7 @@ const Contact = () => {
                 />
                 <ContactCard
                   delay={0.3} icon={Phone} title="Talk to Us"
-                  content="<a href='tel:+917710021009' class='hover:text-primary transition-colors'>+91 7710021009</a>"
+                  content="<a href='tel:+918097508815' class='hover:text-primary transition-colors'>+91 8097508815</a>"
                 />
                 <ContactCard
                   delay={0.4} icon={Mail} title="Write to Us"

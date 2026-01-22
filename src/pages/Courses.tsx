@@ -1,80 +1,64 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import CourseEnquiryPopup from "@/components/shared/CourseEnquiryPopup";
 import { Button } from "@/components/ui/button";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { Clock, Users, Award, BookOpen, ArrowRight, CheckCircle, GraduationCap, Calendar } from "lucide-react";
+import JourneyCTA from "@/components/shared/JourneyCTA";
 
 const programs = [
   {
-    title: "Beginner Yoga Foundation",
-    duration: "8 Weeks",
-    level: "Beginner",
-    format: "Group Classes",
-    purpose: "A comprehensive introduction to yoga for those new to the practice. Learn foundational postures, breathing techniques, and meditation basics in a supportive environment.",
-    outcomes: [
-      "Master 30+ essential yoga postures with proper alignment",
-      "Understand basic pranayama (breathing) techniques",
-      "Develop a sustainable personal practice routine",
-      "Learn relaxation and stress management tools",
-    ],
-    schedule: "3 sessions/week, 75 minutes each",
+    title: "Yoga Teacher Training Course",
+    duration: "200 Hours",
+    purpose: "A comprehensive program designed to deepen your understanding of yoga asanas, pranayama, meditation, anatomy, and yoga philosophy. It prepares students to teach yoga with confidence while promoting physical, mental, and spiritual well-being.",
     color: "bg-sage-50",
     iconColor: "text-sage-600"
   },
   {
-    title: "Advanced Yoga Practitioner",
-    duration: "12 Weeks",
-    level: "Advanced",
-    format: "Small Group",
-    purpose: "For experienced practitioners ready to deepen their practice. Explore advanced asanas, subtle body concepts, and the philosophical foundations of yoga.",
-    outcomes: [
-      "Advanced asana sequences and variations",
-      "Deeper understanding of yoga philosophy",
-      "Pranayama mastery and bandha techniques",
-      "Preparation for teaching or personal mastery",
-    ],
-    schedule: "3 sessions/week, 90 minutes each",
+    title: "Yoga Therapy Teacher Training Course",
+    purpose: "It focuses on using yoga practices as a holistic approach to prevent and manage physical, mental, and lifestyle-related health conditions. The course combines therapeutic asanas, pranayama, relaxation techniques, and yoga philosophy to train students in safe and effective therapeutic applications of yoga.",
     color: "bg-blue-50",
     iconColor: "text-blue-600"
   },
   {
-    title: "Therapeutic Yoga Certification",
-    duration: "6 Months",
-    level: "Professional",
-    format: "Intensive Program",
-    purpose: "A professional certification program for those wanting to use yoga therapeutically. Learn to work with clients facing health challenges under expert mentorship.",
-    outcomes: [
-      "Certified Yoga Therapist credential",
-      "Competence in therapeutic assessment",
-      "Ability to create personalized therapy plans",
-      "Clinical internship experience",
-    ],
-    schedule: "Weekends + 2 weekday evenings",
+    title: "Rope and Belt Therapy Course",
+    purpose: "A specialized yoga therapy program that uses ropes and belts to support, align, and deepen yoga postures safely. The course helps improve flexibility, strength, posture, and spinal health while making asana practice accessible for people with limitations or injuries.",
     color: "bg-amber-50",
     iconColor: "text-amber-600"
   },
   {
-    title: "Meditation Teacher Training",
-    duration: "4 Months",
-    level: "Intermediate to Advanced",
-    format: "Hybrid (Online + In-Person)",
-    purpose: "Become a confident meditation guide. This program covers multiple meditation traditions, teaching methodology, and the science of contemplative practices.",
-    outcomes: [
-      "Certified Meditation Teacher credential",
-      "Proficiency in multiple meditation techniques",
-      "Skills to guide individuals and groups",
-      "Understanding of meditation science",
-    ],
-    schedule: "Weekend intensives + online modules",
+    title: "TTC on Supportive Yoga",
+    duration: "200 Hours",
+    purpose: "It is designed to train teachers in using props and supportive techniques to make yoga practice safe, accessible, and effective for all levels. The course focuses on alignment, injury prevention, and adapting asanas to support individual needs and limitations.",
+    color: "bg-purple-50",
+    iconColor: "text-purple-600"
+  },
+    {
+    title: "Meditation Teacher Training Course",
+    purpose: "It offers in-depth guidance in meditation techniques, mindfulness, and breath awareness to cultivate mental clarity and emotional balance. The course prepares students to confidently teach meditation while supporting inner awareness, stress reduction, and overall well-being.",
+    color: "bg-purple-50",
+    iconColor: "text-purple-600"
+  },
+    {
+    title: "Certified Mindfulness Coach",
+    purpose: "This program trains individuals to guide others in cultivating present-moment awareness, emotional regulation, and stress management. The course combines mindfulness practices with practical coaching skills to support mental well-being and conscious living.",
     color: "bg-purple-50",
     iconColor: "text-purple-600"
   },
 ];
 
-const Training = () => {
+const Courses = () => {
+  const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleEnquiry = (courseName: string) => {
+    setSelectedCourse(courseName);
+    setIsPopupOpen(true);
+  };
   return (
     <div className="overflow-hidden bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative items-center justify-center pt-32 pb-20 md:pb-32 bg-sage-50/50 overflow-hidden">
+      <section className="relative items-center justify-center pt-12 pb-12 bg-sage-50/50 overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1599901868618-eca80330dbee?q=80&w=2800&auto=format&fit=crop')] bg-cover bg-center opacity-5" />
         <div className="zen-container relative z-10 text-center">
           <div className="max-w-4xl mx-auto space-y-8 animate-fade-in-up">
@@ -95,7 +79,7 @@ const Training = () => {
       </section>
 
       {/* Programs */}
-      <section className="py-20 md:py-32 bg-white">
+      <section className="py-20 bg-white">
         <div className="zen-container">
           <SectionHeader
             subtitle="Our Curriculum"
@@ -116,12 +100,12 @@ const Training = () => {
                   <div className="lg:col-span-2 space-y-8">
                     <div className="space-y-4">
                       <div className="flex flex-wrap items-center gap-3">
-                        <span className="text-xs font-bold uppercase tracking-wider bg-primary/10 text-primary px-3 py-1 rounded-full">
+                        {/* <span className="text-xs font-bold uppercase tracking-wider bg-primary/10 text-primary px-3 py-1 rounded-full">
                           {program.level}
-                        </span>
-                        <span className="text-xs font-bold uppercase tracking-wider bg-secondary/50 text-secondary-foreground px-3 py-1 rounded-full border border-secondary">
+                        </span> */}
+                        {/* <span className="text-xs font-bold uppercase tracking-wider bg-secondary/50 text-secondary-foreground px-3 py-1 rounded-full border border-secondary">
                           {program.format}
-                        </span>
+                        </span> */}
                       </div>
                       <h2 className="text-3xl md:text-4xl font-serif font-medium text-foreground group-hover:text-primary transition-colors duration-300">
                         {program.title}
@@ -131,7 +115,7 @@ const Training = () => {
                       </p>
                     </div>
 
-                    <div>
+                    {/* <div>
                       <h4 className="flex items-center gap-2 font-serif font-medium text-foreground text-lg mb-4">
                         <GraduationCap className="h-5 w-5 text-primary" />
                         What You'll Achieve
@@ -144,10 +128,11 @@ const Training = () => {
                           </div>
                         ))}
                       </div>
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className="lg:border-l border-border/40 lg:pl-12 flex flex-col justify-center space-y-8">
+                    {program.duration && (
                     <div className="space-y-6 bg-sage-50/50 p-6 rounded-2xl border border-sage-100/50">
                       <div className="flex items-center gap-4">
                         <div className={`p-2.5 rounded-xl bg-white shadow-sm ${program.iconColor}`}>
@@ -158,7 +143,7 @@ const Training = () => {
                           <p className="text-sm font-medium text-foreground">{program.duration}</p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-4">
+                      {/* <div className="flex items-center gap-4">
                         <div className={`p-2.5 rounded-xl bg-white shadow-sm ${program.iconColor}`}>
                           <Users className="h-5 w-5" />
                         </div>
@@ -166,8 +151,8 @@ const Training = () => {
                           <p className="text-xs text-muted-foreground uppercase opacity-70 font-semibold tracking-wider">Format</p>
                           <p className="text-sm font-medium text-foreground">{program.format}</p>
                         </div>
-                      </div>
-                      <div className="flex items-center gap-4">
+                      </div> */}
+                      {/* <div className="flex items-center gap-4">
                         <div className={`p-2.5 rounded-xl bg-white shadow-sm ${program.iconColor}`}>
                           <Calendar className="h-5 w-5" />
                         </div>
@@ -175,15 +160,16 @@ const Training = () => {
                           <p className="text-xs text-muted-foreground uppercase opacity-70 font-semibold tracking-wider">Schedule</p>
                           <p className="text-sm font-medium text-foreground">{program.schedule}</p>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
+                    )}
 
-                    <Link to="/consultation" className="block">
+                    <div className="block cursor-pointer" onClick={() => handleEnquiry(program.title)}>
                       <Button className="w-full h-12 text-base shadow-md group-hover:shadow-lg transition-all">
-                        Inquire Now
+                        Enquiry Now
                         <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                       </Button>
-                    </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -193,7 +179,7 @@ const Training = () => {
       </section>
 
       {/* Why Train With Us */}
-      <section className="py-20 md:py-32 bg-sage-50 relative overflow-hidden">
+      <section className="py-20 bg-sage-50 relative overflow-hidden">
         <div className="zen-container relative z-10">
           <SectionHeader
             subtitle="Why Choose Vimukti"
@@ -228,27 +214,16 @@ const Training = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-sage-900 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1599447421405-0c1a1143296f?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay" />
-        <div className="zen-container relative z-10 text-center">
-          <h2 className="text-4xl md:text-5xl font-serif font-medium text-white mb-6 animate-fade-in-up">
-            Ready to Transform Your Practice?
-          </h2>
-          <p className="text-lg text-sage-200 mb-10 max-w-2xl mx-auto animate-fade-in-up animation-delay-100 font-light">
-            Connect with our program advisors to find the perfect training path for your goals.
-          </p>
-          <Link to="/consultation" className="animate-fade-in-up animation-delay-200 inline-block">
-            <Button
-              size="xl"
-              className="bg-white text-sage-900 hover:bg-sage-100 border-none h-14 px-8 text-lg font-medium"
-            >
-              Schedule a Program Consultation
-            </Button>
-          </Link>
-        </div>
-      </section>
+      <JourneyCTA />
+
+      <CourseEnquiryPopup
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        courseName={selectedCourse || ""}
+      />
+
     </div>
   );
 };
 
-export default Training;
+export default Courses;

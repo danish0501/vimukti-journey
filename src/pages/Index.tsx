@@ -3,6 +3,8 @@ import Intro from "@/components/home/Intro";
 // import Legacy from "@/components/home/Legacy";
 import Offerings from "@/components/home/Offerings";
 // import Wellness from "@/components/home/Wellness";
+import Approach from "@/components/home/Approach";
+import DiseasesWeTreat from "@/components/home/DiseasesWeTreat";
 import HomeGallery from "@/components/home/HomeGallery";
 import Testimonials from "@/components/home/Testimonials";
 import JourneyCTA from "@/components/shared/JourneyCTA";
@@ -16,6 +18,8 @@ const Index = () => {
       {/* <Legacy /> */}
       <Offerings />
       {/* <Wellness /> */}
+      <Approach />
+      <DiseasesWeTreat />
       <HomeGallery />
       <Testimonials />
       {/* <BlogFeed /> */}

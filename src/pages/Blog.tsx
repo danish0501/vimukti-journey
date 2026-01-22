@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { Calendar, Clock, ArrowRight, User, Sparkles, Search, Tag, BookOpen } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import JourneyCTA from "@/components/shared/JourneyCTA";
 
 const blogPosts = [
   {
@@ -109,13 +111,33 @@ const blogPosts = [
 const categories = ["All", "Lifestyle", "Pranayama", "Wellness", "Yoga Therapy", "Meditation", "Ayurveda", "Practice", "Mental Health", "Philosophy"];
 
 const Blog = () => {
-  const featuredPosts = blogPosts.filter(post => post.featured);
-  const regularPosts = blogPosts.filter(post => !post.featured);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [visibleCount, setVisibleCount] = useState(6);
+
+  const filteredPosts = blogPosts.filter((post) => {
+    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory = selectedCategory === "All" || post.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
+
+  const featuredPosts = filteredPosts.filter(post => post.featured);
+  const regularPosts = filteredPosts.filter(post => !post.featured);
+  const visibleRegularPosts = regularPosts.slice(0, visibleCount);
+
+  const handleLoadMore = () => {
+    setVisibleCount(prev => prev + 6);
+  };
+
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.src = "https://images.unsplash.com/photo-1544367563-12123d8965cd?q=80&w=2940&auto=format&fit=crop"; // Fallback image
+  };
 
   return (
     <div className="overflow-hidden bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative items-center justify-center pt-32 pb-20 md:pb-32 bg-sage-50/50 overflow-hidden">
+      <section className="relative items-center justify-center pt-12 pb-20 bg-sage-50/50 overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center opacity-5" />
         <div className="zen-container relative z-10 text-center">
           <div className="max-w-4xl mx-auto space-y-8 animate-fade-in-up">
@@ -136,6 +158,8 @@ const Blog = () => {
                 <Input
                   type="search"
                   placeholder="Search articles..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full h-12 pl-12 pr-4 rounded-full bg-white border-sage-200 focus:border-primary focus:ring-primary shadow-sm"
                 />
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
@@ -149,10 +173,14 @@ const Blog = () => {
       <section className="py-8 border-b border-border bg-white sticky top-0 z-20 shadow-sm backdrop-blur-md bg-white/80 supports-[backdrop-filter]:bg-white/60">
         <div className="zen-container">
           <div className="flex overflow-x-auto pb-2 md:pb-0 gap-2 no-scrollbar mask-linear-fade">
-            {categories.map((category, index) => (
+            {categories.map((category) => (
               <button
                 key={category}
-                className={`px-6 py-2 text-sm font-medium rounded-full transition-all whitespace-nowrap ${index === 0 ? 'bg-primary text-primary-foreground' : 'bg-sage-50 text-sage-700 hover:bg-sage-100'}`}
+                onClick={() => {
+                  setSelectedCategory(category);
+                  setVisibleCount(6); 
+                }}
+                className={`px-6 py-2 text-sm font-medium rounded-full transition-all whitespace-nowrap ${selectedCategory === category ? 'bg-primary text-primary-foreground' : 'bg-sage-50 text-sage-700 hover:bg-sage-100'}`}
               >
                 {category}
               </button>
@@ -181,6 +209,7 @@ const Blog = () => {
                   <img
                     src={post.image}
                     alt={post.title}
+                    onError={handleImageError}
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute top-4 left-4 z-20">
@@ -233,14 +262,19 @@ const Blog = () => {
             className="mb-12"
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {regularPosts.map((post, index) => (
+            {visibleRegularPosts.map((post, index) => (
               <article
                 key={post.slug}
                 className="group p-2 bg-white rounded-2xl border border-sage-100 hover:shadow-xl transition-all duration-300 animate-fade-in-up flex gap-4"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="w-24 h-24 flex-shrink-0 rounded-xl overflow-hidden">
-                  <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    onError={handleImageError}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
                 </div>
                 <div className="flex flex-col justify-center py-1 pr-2">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-primary mb-1">{post.category}</span>
@@ -264,35 +298,8 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Newsletter CTA */}
-      <section className="py-24 bg-sage-900 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=2031&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay" />
-        <div className="zen-container relative z-10 text-center">
-          <div className="inline-flex items-center justify-center p-3 bg-white/10 rounded-2xl backdrop-blur-sm mb-6">
-            <BookOpen className="h-6 w-6 text-white" />
-          </div>
-          <h2 className="text-4xl md:text-5xl font-serif font-medium text-white mb-6 animate-fade-in-up">
-            Stay Updated on Wellness Wisdom
-          </h2>
-          <p className="text-lg text-sage-200 mb-10 max-w-2xl mx-auto animate-fade-in-up animation-delay-100 font-light">
-            Subscribe to our newsletter for weekly articles, practice tips, and exclusive insights
-            from our expert teachers.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto animate-fade-in-up animation-delay-200">
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              className="h-14 px-6 rounded-full bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white focus:ring-white/20"
-            />
-            <Button
-              size="xl"
-              className="h-14 px-8 rounded-full bg-white text-sage-900 hover:bg-sage-100 border-none font-medium"
-            >
-              Subscribe
-            </Button>
-          </div>
-        </div>
-      </section>
+      <JourneyCTA />
+
     </div>
   );
 };

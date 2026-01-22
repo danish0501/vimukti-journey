@@ -9,18 +9,18 @@ const founderData = {
         name: "Sachin Yelve",
         titles: "Yoga Expert, Yoga & Naturotherapist, Mindfulness Coach",
         role: "Founder, Vimukti Yoga & Wellness Center",
-        phone: "771 002 1009",
+        phone: "+91 8097508815",
         email: "vimuktiyoga2015@gmail.com",
         location: "Nerul, Navi Mumbai - 400706"
     },
     education: [
-        { year: "July 2021", degree: "Certified Mindfulness Coach", inst: "Happitude Mumbai" },
-        { year: "Jan 2021", degree: "Master of Science (Yoga)", inst: "SVYASA - Yoga University Bangaluru" },
-        { year: "2017-2018", degree: "Diploma in Buddhist Studies & Vipassana", inst: "Mumbai University" },
-        { year: "March 2017", degree: "Yoga Instructor Course", inst: "SVYASA - Bangaluru" },
-        { year: "Aug 2016", degree: "Diploma in Yoga Therapy & Naturopathy", inst: "Yoga Vidhya Niketan, Mumbai" },
-        { year: "Aug 2015", degree: "Diploma in Yoga Teacher Training", inst: "Yoga Vidhya Niketan, Mumbai" },
-        { year: "Nov 2014", degree: "Bachelor of Commerce", inst: "Mumbai University" }
+        { degree: "Master of Science (Yoga)", inst: "SVYASA - Yoga University Bangaluru" },
+        { degree: "Certified Mindfulness Coach", inst: "Happitude Mumbai" },
+        { degree: "Diploma in Buddhist Studies & Vipassana", inst: "Mumbai University" },
+        { degree: "Yoga Instructor Course", inst: "SVYASA - Bangaluru" },
+        { degree: "Diploma in Yoga Therapy & Naturopathy", inst: "Yoga Vidhya Niketan, Mumbai" },
+        { degree: "Diploma in Yoga Teacher Training", inst: "Yoga Vidhya Niketan, Mumbai" },
+        { degree: "Bachelor of Commerce", inst: "Mumbai University" }
     ],
     skills: [
         "Hatha Yoga", "Yoga Therapy", "Naturopathy", "Meditation",
@@ -32,7 +32,7 @@ const founderData = {
         {
             role: "Yoga Teacher & Naturotherapist",
             place: "Vimukti Yoga And Wellness Center",
-            period: "Sept 2015 - Present",
+            // period: "Sept 2015 - Present",
             details: [
                 "Promote holistic well-being through teaching and consultation",
                 "Designed integrated Yoga plans for beginner to advanced students",
@@ -45,7 +45,7 @@ const founderData = {
         {
             role: "Support Yoga Teacher (TTC)",
             place: "Yoga Vidya Niketan, Navi Mumbai",
-            period: "Aug 2016 - 2018",
+            // period: "Aug 2016 - 2018",
             details: ["Assisted in training future yoga teachers"]
         }
     ]
@@ -55,7 +55,7 @@ const FounderSection = () => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [activeTab, setActiveTab] = useState("experience"); 
+    const [activeTab, setActiveTab] = useState("experience");
 
     const containerVariants: Variants = {
         hidden: { opacity: 0 },
@@ -263,8 +263,7 @@ const FounderSection = () => {
                                                             <div className="w-0.5 flex-1 bg-slate-100 my-1" />
                                                         </div>
                                                         <div className="pb-6">
-                                                            <span className="text-xs font-bold text-primary px-2 py-1 bg-primary/10 rounded-md">{edu.year}</span>
-                                                            <h4 className="text-lg font-serif font-medium text-slate-800 mt-2">{edu.degree}</h4>
+                                                            <h4 className="text-lg font-serif font-medium text-slate-800">{edu.degree}</h4>
                                                             <p className="text-slate-500 text-sm">{edu.inst}</p>
                                                         </div>
                                                     </div>
@@ -300,7 +299,7 @@ const FounderSection = () => {
                                                                 <h4 className="text-xl font-serif text-slate-800">{exp.role}</h4>
                                                                 <p className="text-primary font-medium text-sm">{exp.place}</p>
                                                             </div>
-                                                            <span className="text-xs font-bold bg-white px-3 py-1 rounded-full border border-slate-200 text-slate-500 shadow-sm">{exp.period}</span>
+                                                            {/* <span className="text-xs font-bold bg-white px-3 py-1 rounded-full border border-slate-200 text-slate-500 shadow-sm">{exp.period}</span> */}
                                                         </div>
                                                         <ul className="space-y-3">
                                                             {exp.details.map((detail, dIdx) => (
